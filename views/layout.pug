@@ -1,0 +1,53 @@
+doctype html
+html(lang='en')
+  head
+    title= title
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js')
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body
+    div(class='container-fluid')
+      div(class='row')
+        div(class='col-sm-2')
+          block sidebar
+            ul(class='sidebar-nav')
+              li
+                a(href='/menu') Home
+              li 
+                hr
+              li
+                a(href='/menu/locaties') Alle locaties
+              li 
+                a(href='/menu/disciplines') Alle disciplines
+              li 
+                a(href='/menu/sportfeesten') Alle sportfeesten
+              li 
+                a(href='/menu/wedstrijden') Alle wedstrijden
+              li
+                a(href='/menu/spelers') Alle spelers
+              li 
+                 a(href='/menu/deelnames') Alle deelnames
+              li
+                hr
+              li
+                p1 Administratorfuncties:
+              li 
+                a(href='/menu/locatie/create') Locatie toevoegen
+              li 
+                a(href='/menu/discipline/create') Discipline toevoegen
+              li 
+                a(href='/menu/sportfeest/create') Sportfeest toevoegen
+              li 
+                a(href='/menu/wedstrijd/create') Wedstrijd toevoegen
+              li 
+               a(href='/menu/speler/create') Speler toevoegen
+              li 
+               a(href='/menu/deelname/create') Deelname toevoegen
+              li 
+                hr
+                
+        div(class='col-sm-10')
+          block content

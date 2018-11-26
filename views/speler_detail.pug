@@ -1,0 +1,30 @@
+extends layout
+
+block content
+
+  h1 Speler: #{speler.voornaam} #{speler.achternaam}
+  p Thuislocatie: #{speler.thuislocatie.naam}
+  p Geboortedatum: #{speler.geboortedatum_geformatteerd}
+  p Leeftijd: #{speler.leeftijd}
+  
+
+  div(style='margin-left:20px;margin-top:20px')
+
+    h4 Deelnames
+    
+    dl
+    each deelname in speler_deelnames
+      dt 
+        a(href=deelname.wedstrijd.url) Discipline: #{deelname.wedstrijd.discipline.naam}
+      dd Locatie: #{deelname.wedstrijd.sportfeest.locatie.naam}
+      dd Datum: #{deelname.wedstrijd.sportfeest.datum_geformatteerd}
+      dd Score: #{deelname.score}
+      br
+
+    else
+      p Deze speler heeft geen deelnames.
+    hr
+    p
+        a(href=speler.url+'/delete') Verwijder deze speler
+    p
+        a(href=speler.url+'/update') Wijzig deze speler

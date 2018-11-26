@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  h1= title
+  
+  ul
+    each sportfeest in sportfeest_list
+      li 
+        a(href=sportfeest.url) #{sportfeest.locatie.naam}  (#{sportfeest.datum_geformatteerd})
+
+    else
+      li Er zijn geen sportfeesten.

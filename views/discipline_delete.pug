@@ -1,0 +1,26 @@
+extends layout
+
+block content
+  h1 #{title}: #{discipline.naam}
+  
+  if discipline_wedstrijden.length
+  
+    p #[strong Verwijder deze wedstrijden vooraleer je deze discipline verwijdert.]
+  
+    div(style='margin-left:20px;margin-top:20px')
+
+      h4 Wedstrijden
+    
+      dl
+      each wedstrijd in discipline_wedstrijden
+        dt 
+          a(href=wedstrijd.url) #{wedstrijd.sportfeest.locatie.naam} #{wedstrijd.sportfeest.datum_geformatteerd}
+
+  else
+    p Wil je deze discipline echt verwijderen?
+    
+    form(method='POST' action='')
+      div.form-group
+        input#disciplineid.form-control(type='hidden',name='disciplineid', required='true', value=discipline._id )
+
+      button.btn.btn-primary(type='submit') Verwijder

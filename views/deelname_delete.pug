@@ -1,0 +1,11 @@
+extends layout
+
+block content
+  h1 #{title}:
+  p Wil je deze deelname echt verwijderen?
+    
+    form(method='POST' action='')
+        div.form-group
+        input#deelnameid.form-control(type='hidden',name='deelnameid', required='true', value=deelname._id )
+
+        button.btn.btn-primary(type='submit') Verwijder

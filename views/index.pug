@@ -1,0 +1,19 @@
+extends layout
+
+block content
+  h1= title
+  p Welkom op deze site, een platform voor de klassementen van alle sportfeesten van het seizoen
+
+  h1 Overzicht
+
+  if error
+    p Error getting the overview.
+  else
+    p Onze database bevat volgende aantal gegevens
+
+    ul
+      li #[strong Locaties:] !{data.locatie_count}
+      li #[strong Disciplines:] !{data.discipline_count}
+      //li #[strong Copies available:] !{data.book_instance_available_count} 
+      li #[strong Spelers:] !{data.speler_count}
+      li #[strong Wedstrijden:] !{data.wedstrijd_count}

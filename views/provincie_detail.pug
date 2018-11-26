@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  h1= provincienaam
+  
+  ul
+    each locatie in locatie_list
+      li 
+        a(href=locatie.url) #{locatie.naam} 
+
+    else
+      li Er zijn geen locaties.

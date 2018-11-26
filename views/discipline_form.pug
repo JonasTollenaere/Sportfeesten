@@ -1,0 +1,24 @@
+extends layout
+
+block content
+  h1 #{title}
+
+  form(method='POST' action='')
+    div.form-group
+      label(for='naam') Naam:
+      input#naam.form-control(type='text' placeholder='Touwtrekken, Hardlopen etc.' name='naam' value=(undefined===discipline ? '' : discipline.naam) autofocus autocomplete="off")
+
+    div.form-group
+      label(for='beschrijving') Beschrijving
+      if discipline
+        textarea#beschrijving.form-control(type='text' placeholder='Beschrijving van de discipline' name='beschrijving' autocomplete="off" rows=8) #{discipline.beschrijving}
+      else
+        textarea#beschrijving.form-control(type='text' placeholder='Beschrijving van de discipline' name='beschrijving' autocomplete="off" rows=8)
+  
+  
+    button.btn.btn-primary(type='submit') Submit
+
+  if errors 
+    ul
+      for error in errors
+        li!= error.msg

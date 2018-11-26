@@ -1,0 +1,28 @@
+extends layout
+
+block content
+  h1=title
+
+  form(method='POST' action='')
+    div.form-group
+      label(for='naam') Naam:
+      input#naam.form-control(type='text' placeholder='vb. Temse' name='naam' required='true' value=(undefined===locatie ? '' : locatie.naam) autofocus autocomplete="off")
+    div.form-group
+      label(for='provincie') Provincie:
+      input#provincie.form-control(type='text' placeholder='vb. Oost-Vlaanderen' name='provincie' required='true' value=(undefined===locatie ? '' : locatie.provincie) autocomplete="off")
+    div.form-group
+      label(for='postcode') Postcode:
+      input#postcode.form-control(type='Number' placeholder='vb. 9140' name='postcode' required='true' value=(undefined===locatie ? '' : locatie.postcode) autocomplete="off")
+    div.form-group
+      label(for='beschrijving') Beschrijving:
+      if locatie 
+        textarea#beschrijving.form-control(type='text' placeholder='Beschrijving' name='beschrijving' required='true' autocomplete="off" rows=8) #{locatie.beschrijving}
+      else 
+        textarea#beschrijving.form-control(type='text' placeholder='Beschrijving' name='beschrijving' required='true' autocomplete="off" rows=8)
+      
+   
+    button.btn.btn-primary(type='submit') Submit
+  if errors 
+    ul
+      for error in errors
+        li!= error.msg

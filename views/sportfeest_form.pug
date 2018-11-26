@@ -1,0 +1,26 @@
+extends layout
+
+block content
+  h1=title
+
+  form(method='POST' action='')
+    div.form-group
+      label(for='locatie') Locatie:
+      select#locatie.form-control(type='select' placeholder='Select locatie' name='locatie' required='true')
+        option(disabled selected style='display:none') Selecteer een locatie
+        for locatie in locatie_list
+          if sportfeest
+            option(value=locatie._id selected=((locatie._id.toString()==sportfeest.locatie._id||locatie._id.toString()==sportfeest.locatie) ? 'selected' : false)) #{locatie.naam} #{locatie.postcode}
+          else
+            option(value=locatie._id) #{locatie.naam} #{locatie.postcode}
+
+    div.form-group
+      label(for='datum') Datum van het sportfeest:
+      input#datum.form-control(type='date' name='datum' value=(undefined===sportfeest ? '' : sportfeest.datum_form))
+
+    button.btn.btn-primary(type='submit') Submit
+
+  if errors 
+    ul
+      for error in errors
+        li!= error.msg

@@ -1,0 +1,17 @@
+extends layout
+
+block content
+
+  h1 Locatie: #{locatie.naam} 
+ 
+     h4 Provincie: #{locatie.provincie}
+     h4 Postcode: #{locatie.postcode}
+
+     h4 Beschrijving: 
+     h5 #{locatie.beschrijving}
+
+  hr
+  p
+    a(href=locatie.url+'/delete') Verwijder deze locatie
+  p
+     a(href=locatie.url+'/update') Wijzig deze locatie

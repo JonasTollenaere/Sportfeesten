@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  h1= title
+  
+  ul
+    each wedstrijd in wedstrijd_list
+      li 
+        a(href=wedstrijd.url)  Discipline: #{wedstrijd.discipline.naam} 
+        | -   #{wedstrijd.sportfeest.locatie.naam} - #{wedstrijd.sportfeest.datum_geformatteerd}
+
+    else
+      li Er zijn geen wedstrijden.

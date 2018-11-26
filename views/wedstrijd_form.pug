@@ -1,0 +1,33 @@
+extends layout
+
+block content
+  h1=title
+
+  form(method='POST' action='')
+ 
+    div.form-group
+      label(for='sportfeest') Sportfeest:
+      select#sportfeest.form-control(type='select' placeholder='Selecteer een sportfeest' name='sportfeest' required='true')
+        option(disabled selected style='display:none') Selecteer een sportfeest
+        for sportfeest in sportfeesten
+          if wedstrijd
+            option(value=sportfeest._id selected=((sportfeest._id.toString()==wedstrijd.sportfeest._id||sportfeest._id.toString()==wedstrijd.sportfeest) ? 'selected' : false)) #{sportfeest.locatie.naam} (#{sportfeest.datum_geformatteerd})
+          else
+            option(value=sportfeest._id) #{sportfeest.locatie.naam} (#{sportfeest.datum_geformatteerd})
+
+    div.form-group
+      label(for='discipline') Discipline:
+      select#discipline.form-control(type='select' placeholder='Selecteer discipline' name='discipline' required='true')
+        option(disabled selected style='display:none') Selecteer een discipline
+        for discipline in disciplines
+          if wedstrijd
+            option(value=discipline._id selected=((discipline._id.toString()==wedstrijd.discipline._id||discipline._id.toString()==wedstrijd.discipline)  ? 'selected' : false)) #{discipline.naam}
+          else
+            option(value=discipline._id) #{discipline.naam}
+
+    button.btn.btn-primary(type='submit') Submit
+
+  if errors 
+    ul
+      for error in errors
+        li!= error.msg

@@ -1,0 +1,42 @@
+extends layout
+
+block content
+  h1 #{title}: #{locatie.naam}
+  p= locatie.provincie
+  
+  if (locatie_spelers.length||locatie_sportfeesten.length)
+  
+    if locatie_spelers.length
+        h4 #[strong Verwijder de volgende spelers voor het verwijderen van deze locatie.]
+  
+        div(style='margin-left:20px;margin-top:20px')
+
+          h4 Spelers met #{locatie.naam} als thuislocatie:
+    
+          dl
+          each speler in locatie_spelers
+            dt 
+              a(href=speler.url) #{speler.voornaam} #{speler.achternaam}
+            dd Geboortedatum: #{speler.geboortedatum_geformatteerd}
+
+    if locatie_sportfeesten.length
+        h4 #[strong Verwijder de volgende sportfeesten voor het verwijderen van deze locatie.]
+  
+        div(style='margin-left:20px;margin-top:20px')
+
+          h4 Sportfeesten met #{locatie.naam} als locatie:
+    
+          dl
+          each sportfeest in locatie_sportfeesten
+            dt 
+              a(href=sportfeest.url) #{locatie.naam} #{sportfeest.datum_geformatteerd}
+
+
+  else
+    p Wil je deze locatie echt verwijderen?
+    
+    form(method='POST' action='')
+      div.form-group
+        input#locatieid.form-control(type='hidden',name='locatieid', required='true', value=locatie._id )
+
+      button.btn.btn-primary(type='submit') Verwijder

@@ -1,0 +1,14 @@
+extends layout
+
+block content
+  h1= title
+  
+  ul
+    each deelname in deelname_list
+      li 
+        a(href=deelname.url)  Discipline: #{deelname.wedstrijd.discipline.naam}
+        | -   #{deelname.wedstrijd.sportfeest.locatie.naam} - #{deelname.wedstrijd.sportfeest.datum_geformatteerd}
+        | - Score: #{deelname.score} - 
+        a(href=deelname.speler.url)| Speler: #{deelname.speler.voornaam}
+    else
+      li Er zijn geen deelnames.

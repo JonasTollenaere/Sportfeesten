@@ -1,0 +1,26 @@
+extends layout
+
+block content
+  h1 Verwijder sportfeest: #{sportfeest.locatie.naam} #{sportfeest.datum_geformatteerd}
+  
+  if sportfeest_wedstrijden.length
+  
+    p #[strong Verwijder volgende wedstrijden vooraleer je dit sportfeest kan verwijderen.]
+  
+    div(style='margin-left:20px;margin-top:20px')
+
+      h4 Wedstrijden
+    
+      dl
+      each wedstrijd in sportfeest_wedstrijden
+        dt 
+          a(href=wedstrijd.url) #{wedstrijd.discipline.naam}
+
+  else
+    p Wil je dit sportfeest echt verwijderen?
+    
+    form(method='POST' action='')
+      div.form-group
+        input#sportfeestid.form-control(type='hidden',name='sportfeestid', required='true', value=sportfeest._id )
+
+      button.btn.btn-primary(type='submit') Verwijder

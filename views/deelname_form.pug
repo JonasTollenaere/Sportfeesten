@@ -1,0 +1,37 @@
+extends layout
+
+block content
+  h1=title
+
+  form(method='POST' action='')
+    div.form-group
+      label(for='wedstrijd') Wedstrijd:
+      select#wedstrijd.form-control(type='select' placeholder='Selecteer wedstrijd' name='wedstrijd' required='true')
+        option(disabled selected style='display:none') Selecteer een wedstrijd
+        for wedstrijd in wedstrijden
+          if deelname
+            option(value=wedstrijd._id selected=((wedstrijd._id.toString()==deelname.wedstrijd._id||wedstrijd._id.toString()==deelname.wedstrijd) ? 'selected' : false)) #{wedstrijd.discipline.naam} - #{wedstrijd.sportfeest.locatie.naam} #{wedstrijd.sportfeest.datum_geformatteerd} 
+          else
+            option(value=wedstrijd._id) #{wedstrijd.discipline.naam} - #{wedstrijd.sportfeest.locatie.naam} #{wedstrijd.sportfeest.datum_geformatteerd} 
+
+    div.form-group
+      label(for='speler') Speler:
+      select#speler.form-control(type='select' placeholder='Select speler' name='speler' required='true')
+        option(disabled selected style='display:none') Selecteer een speler
+        for speler in spelers
+          if deelname
+            option(value=speler._id selected=((speler._id.toString()==deelname.speler._id||speler._id.toString()==deelname.speler) ? 'selected' : false)) #{speler.voornaam} #{speler.achternaam} (#{speler.thuislocatie.naam})
+          else
+            option(value=speler._id) #{speler.voornaam} #{speler.achternaam} (#{speler.thuislocatie.naam})
+        
+    div.form-group
+      label(for='score') Score:
+      input#score.form-control(type='number' placeholder='Score' name='score' required='true' value=(undefined===deelname ? '' : deelname.score))
+
+
+    button.btn.btn-primary(type='submit') Submit
+
+  if errors 
+    ul
+      for error in errors
+        li!= error.msg

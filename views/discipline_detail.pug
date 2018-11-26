@@ -1,0 +1,14 @@
+extends layout
+
+block content
+
+     h1 Discipline: #{discipline.naam} 
+
+     h4 Beschrijving: 
+     h5 #{discipline.beschrijving}
+
+     hr
+     p
+        a(href=discipline.url+'/delete') Verwijder discipline
+     p
+        a(href=discipline.url+'/update') Wijzig discipline

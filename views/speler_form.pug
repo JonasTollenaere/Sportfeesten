@@ -1,0 +1,35 @@
+extends layout
+
+block content
+  h1=title
+
+  form(method='POST' action='')
+
+    div.form-group
+      label(for='voornaam') Voornaam:
+      input#voornaam.form-control(type='text' placeholder='Voornaam' name='voornaam' required='true' value=(undefined===speler ? '' : speler.voornaam) autocomplete="off")
+  
+    div.form-group
+      label(for='achternaam') Achternaam:
+      input#achternaam.form-control(type='text' placeholder='Achternaam' name='achternaam' required='true' value=(undefined===speler ? '' : speler.achternaam) autocomplete="off")
+  
+    div.form-group
+      label(for='geboortedatum') Geboortedatum:
+      input#geboortedatum.form-control(type='date' name='geboortedatum' value=(undefined===speler ? '' : speler.geboortedatum_form) autocomplete="off") 
+
+    div.form-group
+      label(for='thuislocatie') Thuislocatie:
+      select#thuislocatie.form-control(type='select' placeholder='Selecteer Thuislocatie' name='thuislocatie' required='true' autocomplete="off")
+        option(disabled selected style='display:none') Selecteer een locatie
+        for locatie in locatie_list
+          if speler
+            option(value=locatie._id selected=((locatie._id.toString()==speler.thuislocatie._id||locatie._id.toString()==speler.thuislocatie) ? 'selected' : false)) #{locatie.naam} (#{locatie.provincie})
+          else
+            option(value=locatie._id) #{locatie.naam} (#{locatie.provincie})
+            
+    button.btn.btn-primary(type='submit') Submit
+
+  if errors 
+    ul
+      for error in errors
+        li!= error.msg

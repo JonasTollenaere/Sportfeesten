@@ -1,0 +1,14 @@
+extends layout
+
+block content
+  h1 #{speler.voornaam} #{speler.achternaam}
+  p Thuislocatie: #{speler.thuislocatie.naam}
+  p Geboortedatum: #{speler.geboortedatum_geformatteerd}
+  
+    p Wil je deze speler echt verwijderen? Alle deelnames voor deze speler worden ook verwijderd.
+    
+    form(method='POST' action='')
+        div.form-group
+        input#spelerid.form-control(type='hidden',name='spelerid', required='true', value=speler._id )
+
+        button.btn.btn-primary(type='submit') Verwijder
