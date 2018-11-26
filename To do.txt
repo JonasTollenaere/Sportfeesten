@@ -1,8 +1,8 @@
-- CSS
+- CSS (Elien)
 
-- Google Maps API?
+- Google Maps API? (Elien)
 
-- Afbeeldingen?
+- Afbeeldingen? (Elien)
 
 - HTML 'table' in alle detailpagina's (in pug bestanden fiksen)
 	=> https://www.nodejsera.com/library/pug/pug-tables.html?fbclid=IwAR3N31GzGq_ZpeVI3obW8dU60WfvD_a38LQ9duluWxfMExXMTYL6M-iP31o
@@ -11,13 +11,12 @@
 - AJAX moet voorkomen! Ajax: https://www.w3schools.com/xml/ajax_intro.asp
 	=> Mogelijk handig bij forms om deelnames te creëren (documenteren voor/na voor presentatie!)
 
-- Presentatie:
+- Presentatie: (Elien)
 	=> UML schema maken
 	=> Routing schema maken
 
-- Nadenken over homepagine (indexrouter) + homepagina /menu
+- Nadenken over homepagine (indexrouter) + homepagina /menu (Elien)
 
 - Authenticatie voor adminsitrators (zie hint toledo:    Authenticatie: http://www.passportjs.org/) 	
 	=> zou straight forward moeten kunnen toegepast worden op routes in menu.js (nl. deletes en updates)
-	=> mooie loginknop rechtsboven?
-AMAI WE MOETEN NOG VEEL DOEN!
+	=> mooie loginknop rechtsboven? (Elien)
