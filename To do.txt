@@ -20,3 +20,4 @@
 - Authenticatie voor adminsitrators (zie hint toledo:    Authenticatie: http://www.passportjs.org/) 	
 	=> zou straight forward moeten kunnen toegepast worden op routes in menu.js (nl. deletes en updates)
 	=> mooie loginknop rechtsboven?
+AMAI WE MOETEN NOG VEEL DOEN!
