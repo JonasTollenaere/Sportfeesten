@@ -3,15 +3,15 @@ extends layout
 block content
   h1= title
   
-  table.btn-group()
+  table.table.table-striped
     tr
-        th(style='padding:5px;') Naam
-        th(style='padding:5px;') Provincie
+        th Naam
+        th Provincie
     each locatie in locatie_list
         tr
-            td(style='padding:5px;')
+            td
                 a(href=locatie.url) #{locatie.naam}
-            td(style='padding:5px;')
+            td             
                 a(href=locatie.provincie_url) #{locatie.provincie}
      
 

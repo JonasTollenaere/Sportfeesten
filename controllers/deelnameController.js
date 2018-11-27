@@ -1,6 +1,7 @@
 var Deelname = require('../models/deelname');
 var Speler = require('../models/speler');
 var Wedstrijd = require('../models/wedstrijd');
+var Sportfeest = require('../models/sportfeest');
 var async = require('async');
 const { body, validationResult } = require('express-validator/check');
 const { sanitizeBody } = require('express-validator/filter');
@@ -53,9 +54,14 @@ exports.deelname_create_get = function (req, res, next) {
                 .populate('sportfeest')
                 .populate({ path: 'sportfeest', populate: { path: 'locatie' } });
         },
+        sportfeesten: function (callback) {
+            Sportfeest
+                .find(callback)
+                .populate('locatie');
+        },
     }, function (err, results) {
         if (err) { return next(err); }
-        res.render('deelname_form', { title: 'Deelname toevoegen', spelers: results.spelers, wedstrijden: results.wedstrijden });
+        res.render('deelname_form', { title: 'Deelname toevoegen', spelers: results.spelers, wedstrijden: results.wedstrijden, sportfeesten: results.sportfeesten });
     });
 
 }
@@ -104,10 +110,15 @@ exports.deelname_create_post = [
                         .populate('sportfeest')
                         .populate({ path: 'sportfeest', populate: { path: 'locatie' } });
                 },
+                sportfeesten: function (callback) {
+                    Sportfeest
+                        .find(callback)
+                        .populate('locatie');
+                },
             }, function (err, results) {
                 if (err) {
                     return next(err);
-                    res.render('deelname_form', { title: 'Toevoegen deelname', spelers: results.spelers, wedstrijden: results.wedstrijden, deelname: deelname, errors: errors.array() });
+                    res.render('deelname_form', { title: 'Toevoegen deelname', spelers: results.spelers, wedstrijden: results.wedstrijden, deelname: deelname, sportfeesten: results.sportfeesten, errors: errors.array() });
                 }
             });
             return;
@@ -213,6 +224,11 @@ exports.deelname_update_get = function (req, res, next) {
                 .populate('thuislocatie')
                 .sort('naam');
         },
+        sportfeesten: function (callback) {
+            Sportfeest
+                .find(callback)
+                .populate('locatie');
+        },
     }, function (err, results) {
         if (err) { return next(err); }
         if (results.deelname == null) { // No results.
@@ -222,7 +238,7 @@ exports.deelname_update_get = function (req, res, next) {
         }
         // Success.
 
-        res.render('deelname_form', { title: 'Update deelname', spelers: results.spelers, wedstrijden: results.wedstrijden, deelname: results.deelname });
+        res.render('deelname_form', { title: 'Update deelname', spelers: results.spelers, wedstrijden: results.wedstrijden, sportfeesten: results.sportfeesten, deelname: results.deelname });
     });
 
 };
@@ -273,10 +289,15 @@ exports.deelname_update_post = [
                         .populate('thuislocatie')
                         .sort('naam');
                 },
+                sportfeesten: function (callback) {
+                    Sportfeest
+                        .find(callback)
+                        .populate('locatie');
+                },
             }, function (err, results) {
                 if (err) { return next(err); }
 
-                res.render('deelname_form', { title: 'Update deelname', spelers: results.spelers, wedstrijden: results.wedstrijden, deelname: deelname, errors: errors.array() });
+                res.render('deelname_form', { title: 'Update deelname', spelers: results.spelers, wedstrijden: results.wedstrijden, deelname: deelname, sportfeesten: results.sportfeesten, errors: errors.array() });
             });
             return;
         }
@@ -290,3 +311,14 @@ exports.deelname_update_post = [
         }
     }
 ];
+
+// Alle wedstrijden horende bij een bepaald sportfeest weergeven voor AJAX in deelnameformulier
+exports.get_wedstrijdensportfeest = function (req, res, next) {
+    Wedstrijd.find({ 'sportfeest': req.params.id })
+        .populate('discipline')
+        .exec(function (err, list_wedstrijden) {
+            if (err) { return next(err); }
+            //Successvol, dus verstuur de wedstrijden
+            res.send(list_wedstrijden);
+        });
+};

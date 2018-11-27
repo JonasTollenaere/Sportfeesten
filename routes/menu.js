@@ -38,6 +38,9 @@ router.get('/deelname/:id', deelname_controller.deelname_detail);
 // GET request voor de lijst met alle deelnames
 router.get('/deelnames', deelname_controller.deelname_list);
 
+// GET request voor wedstrijden horende bij een sportfeest in deelnameform
+router.get('/getWedstrijden/:id', deelname_controller.get_wedstrijdensportfeest);
+
 
 
 /// Wedstrijd routes ///

@@ -4,10 +4,21 @@ block content
   h1=title
 
   form(method='POST' action='')
+ 
     div.form-group
-      label(for='wedstrijd') Wedstrijd:
+      label(for='sportfeest') Sportfeest:
+      select#sportfeest.form-control(type='select' placeholder='Selecteer een sportfeest' name='sportfeest' required='true' onchange='updateDisciplines()')
+        option(disabled selected style='display:none') Selecteer een sportfeest
+        for sportfeest in sportfeesten
+          if deelname
+            option(value=sportfeest._id selected=((sportfeest._id.toString()==deelname.wedstrijd.sportfeest._id||sportfeest._id.toString()==deelname.wedstrijd.sportfeest) ? 'selected' : false)) #{sportfeest.locatie.naam} #{sportfeest.datum_geformatteerd} 
+          else
+            option(value=sportfeest._id) #{sportfeest.locatie.naam} #{sportfeest.datum_geformatteerd} 
+    
+    div.form-group
+      label(for='wedstrijd' id='wedstrijdlabel') Discipline:
       select#wedstrijd.form-control(type='select' placeholder='Selecteer wedstrijd' name='wedstrijd' required='true')
-        option(disabled selected style='display:none') Selecteer een wedstrijd
+        option(disabled selected style='display:none') Selecteer een sportfeest om de aanwezig disciplines weer te geven
         for wedstrijd in wedstrijden
           if deelname
             option(value=wedstrijd._id selected=((wedstrijd._id.toString()==deelname.wedstrijd._id||wedstrijd._id.toString()==deelname.wedstrijd) ? 'selected' : false)) #{wedstrijd.discipline.naam} - #{wedstrijd.sportfeest.locatie.naam} #{wedstrijd.sportfeest.datum_geformatteerd} 
@@ -26,7 +37,7 @@ block content
         
     div.form-group
       label(for='score') Score:
-      input#score.form-control(type='number' placeholder='Score' name='score' required='true' value=(undefined===deelname ? '' : deelname.score))
+      input#score.form-control(type='number' placeholder='Score' name='score' required='true' value=(undefined===deelname ? '' : deelname.score) )
 
 
     button.btn.btn-primary(type='submit') Submit
@@ -35,3 +46,4 @@ block content
     ul
       for error in errors
         li!= error.msg
+  script(src="/javascripts/deelnameform.js")
