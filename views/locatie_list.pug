@@ -3,13 +3,17 @@ extends layout
 block content
   h1= title
   
-  ul
+  table.btn-group()
+    tr
+        th(style='padding:5px;') Naam
+        th(style='padding:5px;') Provincie
     each locatie in locatie_list
-      li 
-        a(href=locatie.url) #{locatie.naam}
-        |  - (
-        a(href=locatie.provincie_url) #{locatie.provincie}
-        |)
+        tr
+            td(style='padding:5px;')
+                a(href=locatie.url) #{locatie.naam}
+            td(style='padding:5px;')
+                a(href=locatie.provincie_url) #{locatie.provincie}
+     
 
     else
       li Er zijn geen locaties.

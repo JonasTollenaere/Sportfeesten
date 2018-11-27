@@ -7,6 +7,7 @@
 - HTML 'table' in alle detailpagina's (in pug bestanden fiksen)
 	=> https://www.nodejsera.com/library/pug/pug-tables.html?fbclid=IwAR3N31GzGq_ZpeVI3obW8dU60WfvD_a38LQ9duluWxfMExXMTYL6M-iP31o
 	=> later sorteerknoppen toevoegen (Jonas heeft al ideetjes, kost wel veel tijd)
+	=> (Jonas bezig, locatie_list.pug en locatieController.js)
 
 - AJAX moet voorkomen! Ajax: https://www.w3schools.com/xml/ajax_intro.asp
 	=> Mogelijk handig bij forms om deelnames te creëren (documenteren voor/na voor presentatie!)
