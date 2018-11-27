@@ -8,16 +8,22 @@ function updateDisciplines() {
 
             var select = document.getElementById("wedstrijd");
             select.options.length = 0;
-            select.disabled = false;
             
             var defaultoption = new Option();
-            if (wedstrijden.length == 0) defaultoption.innerHTML = "Er zijn voorlopig geen disciplines ingevoerd bij dit sportfeest";
-            else {
-                defaultoption.disabled = true;
-                defaultoption.innerHTML = "Selecteer een discipline";
+            if (wedstrijden.length == 0) {
+                defaultoption.innerHTML = "Er zijn voorlopig geen disciplines ingevoerd bij dit sportfeest";
+                select.disabled = true;
+                document.getElementById('submitbutton').disabled = true;
             }
-           
+            else {
+                defaultoption.innerHTML = "Selecteer een discipline";
+                select.disabled = false;
+                document.getElementById('submitbutton').disabled = false;
+            }
+
+            defaultoption.disabled = true;
             defaultoption.selected = true;
+            defaultoption.value = null;
             defaultoption.style = 'display:none';
             select.options.add(defaultoption);
             
