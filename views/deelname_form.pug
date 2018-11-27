@@ -17,14 +17,9 @@ block content
     
     div.form-group
       label(for='wedstrijd' id='wedstrijdlabel') Discipline:
-      select#wedstrijd.form-control(type='select' placeholder='Selecteer wedstrijd' name='wedstrijd' required='true')
-        option(disabled selected style='display:none') Selecteer een sportfeest om de aanwezig disciplines weer te geven
-        for wedstrijd in wedstrijden
-          if deelname
-            option(value=wedstrijd._id selected=((wedstrijd._id.toString()==deelname.wedstrijd._id||wedstrijd._id.toString()==deelname.wedstrijd) ? 'selected' : false)) #{wedstrijd.discipline.naam} - #{wedstrijd.sportfeest.locatie.naam} #{wedstrijd.sportfeest.datum_geformatteerd} 
-          else
-            option(value=wedstrijd._id) #{wedstrijd.discipline.naam} - #{wedstrijd.sportfeest.locatie.naam} #{wedstrijd.sportfeest.datum_geformatteerd} 
-
+      select#wedstrijd.form-control(type='select' placeholder='Selecteer wedstrijd' name='wedstrijd' required='true' disabled)
+        option(disabled selected style='display:none') Selecteer een sportfeest om de aanwezige disciplines weer te geven
+   
     div.form-group
       label(for='speler') Speler:
       select#speler.form-control(type='select' placeholder='Select speler' name='speler' required='true')
