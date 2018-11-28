@@ -7,6 +7,7 @@ html(lang='en')
     link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js')
     script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
+    link(rel='icon', href='/images/favicon.ico')
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
     div(class='container-fluid')
@@ -14,6 +15,11 @@ html(lang='en')
         div(class='col-sm-2')
           block sidebar
             ul(class='sidebar-nav')
+              li
+                img.resize(src="/images/Logo.png" alt="logo") 
+                //dit logo gebruiken als home knop?
+              li
+                hr
               li
                 a(href='/menu') Home
               li 
@@ -53,7 +59,6 @@ html(lang='en')
               li
                 form(action="/user/login")
                      button.btn.btn-primary(type='submit' id='loginbutton') Log in
-
               li
                 hr
                 

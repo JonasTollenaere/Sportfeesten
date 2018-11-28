@@ -12,7 +12,6 @@
 - AJAX moet voorkomen! Ajax: https://www.w3schools.com/xml/ajax_intro.asp
 	=> Mogelijk handig bij forms om deelnames te creëren (documenteren voor/na voor presentatie!)
 
-
 - Presentatie: (Elien)
 	=> UML schema maken
 	=> Routing schema maken
@@ -25,5 +24,4 @@
 
 => Third party API's 2x
 
-=> favicon in orde
-
+- website online zetten

@@ -3,3 +3,32 @@
     padding: 0;
     list-style: none;
 }
+a{
+    color:green;
+}
+.resize {
+    width: 100px;
+    height: auto;
+}
+myTable {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#myTable td, #myTable th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#myTable tr:hover {
+    background-color: #ddd;
+}
+
+#myTable th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: white;
+    color: greenyellow;
+}
