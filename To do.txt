@@ -1,6 +1,6 @@
-- CSS (Elien)
+- CSS (Elien) + MOBIEL
 
-- Google Maps API? (Elien)
+- Google Maps => embedded media element
 
 - Afbeeldingen? (Elien)
 
@@ -22,3 +22,8 @@
 - Authenticatie voor adminsitrators (zie hint toledo:    Authenticatie: http://www.passportjs.org/) 	
 	=> zou straight forward moeten kunnen toegepast worden op routes in menu.js (nl. deletes en updates)
 	=> mooie loginknop rechtsboven? (Elien)
+
+=> Third party API's 2x
+
+=> favicon in orde
+
