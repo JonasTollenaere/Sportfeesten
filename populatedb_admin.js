@@ -24,19 +24,7 @@ mongoose.connection.on('error', console.error.bind(console, 'MongoDB connection 
 var gebruikers = [];
 
 function gebruikerCreate(naam, wachtwoord, cb) {
-    gebruikerdetail = { username: naam, password: wachtwoord}
-  
-    var gebruiker = new Gebruiker(gebruikerdetail);
-
- gebruiker.save(function (err) {
-    if (err) {
-      cb(err, null)
-      return
-    }
-      console.log('Nieuwe admin: ' + gebruiker);
-      gebruikers.push(gebruiker)
-      cb(null, gebruiker)
-  }  );
+    Gebruiker.register(new Gebruiker({username:naam}),wachtwoord, cb)
 }
 
 function createGebruikers(cb) {
