@@ -4,18 +4,16 @@ extends layout
 block content
   h1= title
   
-  table.table.table-striped
+  table#myTable
     tr
-      th (onclick='sortTable(0)') Gemeente
-      th (onclick='sortTable(1)') Provincie
+      th(onclick ='sortTable(0)') Gemeente
+      th(onclick ='sortTable(1)') Provincie
     each locatie in locatie_list
         tr
             td
                 a(href=locatie.url) #{locatie.naam}
             td             
                 a(href=locatie.provincie_url) #{locatie.provincie}
-     
-
     else
       li Er zijn geen locaties.
-  script(src="/javascripts/tablesort.js')
+  script(src="/javascripts/tablesort.js")
