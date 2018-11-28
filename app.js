@@ -3,10 +3,14 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var passport = require('passport');
+var session = require('express-session');
+
+
 
 var indexRouter = require('./routes/index');
 var menuRouter = require('./routes/menu');
-
+var userRouter = require('./routes/user')
 
 var app = express();
 
@@ -28,8 +32,16 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Passport and middleware setup
+app.use(session({ secret: 'RFJ2hGclIgRjPYjhvrB2', resave: true, saveUninitialized: true }));
+app.use(passport.initialize());
+app.use(passport.session());
+
+
+// Routing setup
 app.use('/', indexRouter);
 app.use('/menu', menuRouter);
+app.use('/user', userRouter);
 
 // Catch 404 and forward to error handler
 app.use(function(req, res, next) {
