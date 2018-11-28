@@ -4,12 +4,9 @@
     "\\controllers",
     "\\models",
     "\\public",
-    "\\public\\images",
     "\\public\\javascripts",
-    "\\public\\stylesheets",
-    "\\routes",
-    "\\views"
+    "\\routes"
   ],
-  "SelectedNode": "\\views\\layout.pug",
+  "SelectedNode": "\\public\\javascripts\\deelnameform.js",
   "PreviewInSolutionExplorer": false
 }
