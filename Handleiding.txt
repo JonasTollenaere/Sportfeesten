@@ -6,3 +6,4 @@ mongodb://sportfeestsite:ML4BJS@ds249372.mlab.com:49372/sportfeest
 
 DEVSTART:		SET DEBUG=Sportfeesten:* & npm run devstart
 POPULATEDB: 		node populatedb mongodb://sportfeestsite:ML4BJS@ds249372.mlab.com:49372/sportfeest
+POPULATEDB_ADMIN:	node populatedb_admin mongodb://sportfeestsite:ML4BJS@ds249372.mlab.com:49372/sportfeest
