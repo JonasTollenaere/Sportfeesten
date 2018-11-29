@@ -2,7 +2,7 @@
 
 - Google Maps => embedded media element
 
-- Afbeeldingen? (Elien)
+- Afbeeldingen? (mogelijk in mongoose?)
 
 - HTML 'table' in alle detailpagina's (in pug bestanden fiksen)
 	=> https://www.nodejsera.com/library/pug/pug-tables.html?fbclid=IwAR3N31GzGq_ZpeVI3obW8dU60WfvD_a38LQ9duluWxfMExXMTYL6M-iP31o
@@ -21,6 +21,7 @@
 - Authenticatie voor adminsitrators (zie hint toledo:    Authenticatie: http://www.passportjs.org/) 	
 	=> zou straight forward moeten kunnen toegepast worden op routes in menu.js (nl. deletes en updates)
 	=> mooie loginknop linksonder! JONAS
+	=> na inloggen moet men teruggestuurd worden naar vorige pagina, ingewikkelder dan terugsturen naar referer
 
 => Third party API's 2x
 

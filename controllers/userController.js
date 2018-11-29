@@ -25,7 +25,7 @@ exports.login_post = [
 // Logout verwerken
 exports.logout_get = function (req, res) {
     req.logout();
-    res.redirect('/')
+    res.redirect(req.headers.referer||'/');
 };
 
 // Opgevraagde gebruikerinfo opsturen
