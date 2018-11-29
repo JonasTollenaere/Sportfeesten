@@ -3,11 +3,21 @@ extends layout
 block content
   h1= title
   
-  ul
+  table#myTable
+    tr
+      th(onclick='sortTable(0)') Discipline
+      th(onclick='sortTable(1)') Gemeente
+      th(onclick='sortTable(2)') Datum
     each wedstrijd in wedstrijd_list
-      li 
-        a(href=wedstrijd.url)  Discipline: #{wedstrijd.discipline.naam} 
-        | -   #{wedstrijd.sportfeest.locatie.naam} - #{wedstrijd.sportfeest.datum_geformatteerd}
+         tr
+            td
+                a(href=wedstrijd.url) #{wedstrijd.discipline.naam}
+            td             
+                a(href=wedstrijd.url) #{wedstrijd.sportfeest.locatie.naam}
+            td             
+                a(href=wedstrijd_url) #{wedstrijd.sportfeest.datum_geformatteerd}
+        
 
     else
       li Er zijn geen wedstrijden.
+  script(src="/javascripts/tablesort.js")

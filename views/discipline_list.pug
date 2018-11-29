@@ -7,7 +7,8 @@ block content
     each discipline in discipline_list
       li 
         a(href=discipline.url) #{discipline.naam} 
+        |  
+        br4
         |  (#{discipline.beschrijving})
-
     else
       li Er zijn geen disciplines.

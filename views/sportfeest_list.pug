@@ -3,10 +3,17 @@ extends layout
 block content
   h1= title
   
-  ul
+  table#myTable
+    tr
+      th(onclick='sortTable(0)') Discipline
+      th(onclick='sortTable(1)') Gemeente
     each sportfeest in sportfeest_list
-      li 
-        a(href=sportfeest.url) #{sportfeest.locatie.naam}  (#{sportfeest.datum_geformatteerd})
+        tr
+           td
+                a(href=sportfeest.url) #{sportfeest.locatie.naam}  
+           td             
+                a(href=sportfeest.url) #{sportfeest.datum_geformatteerd}
 
     else
       li Er zijn geen sportfeesten.
+  script(src="/javascripts/tablesort.js")

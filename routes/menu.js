@@ -70,7 +70,7 @@ router.post('/wedstrijd/:id/update', wedstrijd_controller.wedstrijd_update_post)
 router.get('/wedstrijd/:id', wedstrijd_controller.wedstrijd_detail);
 
 // GET request voor de lijst met alle wedstrijden
-router.get('/wedstrijden', wedstrijd_controller.wedstrijd_list);
+//router.get('/wedstrijden', wedstrijd_controller.wedstrijd_list);
 
 
 

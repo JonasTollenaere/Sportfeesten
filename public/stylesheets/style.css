@@ -3,6 +3,9 @@
     padding: 0;
     list-style: none;
 }
+body {
+    background-image: "foto1.jpg";
+}
 a{
     color:green;
 }
@@ -29,6 +32,6 @@ myTable {
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: left;
-    background-color: white;
-    color: greenyellow;
+    background-color: #E42630;
+    color: white;
 }
