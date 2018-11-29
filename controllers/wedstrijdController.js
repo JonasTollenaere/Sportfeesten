@@ -1,6 +1,4 @@
 var Wedstrijd = require('../models/wedstrijd');
-var Locatie = require('../models/locatie');
-var Speler = require('../models/speler');
 var Discipline = require('../models/discipline');
 var Deelname = require('../models/deelname');
 var Sportfeest = require('../models/sportfeest');

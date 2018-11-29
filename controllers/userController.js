@@ -33,3 +33,10 @@ exports.get_gebruiker_info = function (req, res) {
     res.send(req.session.passport.user);
 }
 
+// Controleren of een user ingelogd is
+exports.isAuthenticated = function (req, res, next) {
+    if (req.isAuthenticated()) {
+        return next();
+    }
+    else res.redirect('/user/login');
+}

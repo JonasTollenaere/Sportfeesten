@@ -1,8 +1,6 @@
 var Speler = require('../models/speler');
-//var Wedstrijd = require('../models/wedstrijd');
 var Locatie = require('../models/locatie');
 var Deelname = require('../models/deelname');
-//var Discipline = require('../models/discipline');
 var async = require('async');
 const { body, validationResult } = require('express-validator/check');
 const { sanitizeBody } = require('express-validator/filter');
