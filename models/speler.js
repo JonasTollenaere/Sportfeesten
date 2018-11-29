@@ -32,7 +32,7 @@ SpelerSchema
 SpelerSchema
     .virtual('geboortedatum_geformatteerd')
     .get(function () {
-        return moment(this.geboortedatum).format('MMM Do, YYYY');
+        return moment(this.geboortedatum).format('l');
     });
 
 // Virtual voor geboortedatum in form

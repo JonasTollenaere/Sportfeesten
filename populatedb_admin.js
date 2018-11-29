@@ -35,6 +35,12 @@ function createGebruikers(cb) {
         function(callback) {
             gebruikerCreate("Elien M", "Elienelientje" , callback);
         },
+        function (callback) {
+            gebruikerCreate("Vincent N", "Internetapplicaties", callback);
+        },
+        function (callback) {
+            gebruikerCreate("Ilse B", "Internetapplicaties", callback);
+        },
         ],
         // optional callback
         cb);
