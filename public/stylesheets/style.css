@@ -6,8 +6,21 @@
 body {
     background-image: "foto1.jpg";
 }
-a{
-    color:green;
+h1 {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 55px;
+}
+p {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 15px;
+}
+a {
+    color: green;
+    font-family: 'Ubuntu', sans-serif;
+    font-size:15px;
+}
+a:hover{
+    color:#094d09;
 }
 .resize {
     width: 100px;
@@ -35,3 +48,17 @@ myTable {
     background-color: #E42630;
     color: white;
 }
+.logo:hover {
+    width: 120px;
+    height: auto;
+}
+.style {
+    width: 150px;
+    background-color: #E42630;
+    border: 0px;
+}
+.btn:hover {
+    background-image: none;
+    background-color: #b51212;
+}
+

@@ -183,7 +183,7 @@ router.post('/speler/:id/update', user_controller.isAuthenticated, speler_contro
 router.get('/speler/:id', speler_controller.speler_detail);
 
 // GET request voor de lijst met alle spelers
-router.get('/spelers', speler_controller.speler_list);
+//router.get('/spelers', speler_controller.speler_list);
 
 
 

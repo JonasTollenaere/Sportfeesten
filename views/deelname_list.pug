@@ -3,12 +3,26 @@ extends layout
 block content
   h1= title
   
-  ul
+  table#myTable
+    tr
+      th(onclick='sortTable(0)') Datum
+      th(onclick='sortTable(1)') Locatie
+      th(onclick='sortTable(2)') Discipline
+      th(onclick='sortTable(3)') Speler
+      th(onclick='sortTable(4)') Score
     each deelname in deelname_list
-      li 
-        a(href=deelname.url)  Discipline: #{deelname.wedstrijd.discipline.naam}
-        | -   #{deelname.wedstrijd.sportfeest.locatie.naam} - #{deelname.wedstrijd.sportfeest.datum_geformatteerd}
-        | - Score: #{deelname.score} - 
-        a(href=deelname.speler.url)| Speler: #{deelname.speler.voornaam}
+      tr
+            td
+                a(href=deelname.url) #{deelname.wedstrijd.sportfeest.datum_geformatteerd}
+            td             
+                a(href=deelname.url) #{deelname.wedstrijd.sportfeest.locatie.naam}
+            td  
+                a(href=deelname.url) #{deelname.wedstrijd.discipline.naam}
+            td 
+                a(href=deelname.speler.url) #{deelname.speler.voornaam}
+            td 
+                a(href=deelname.url) #{deelname.score}
+                
     else
       li Er zijn geen deelnames.
+    script(src="/javascripts/tablesort.js")

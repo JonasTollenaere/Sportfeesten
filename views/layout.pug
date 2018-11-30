@@ -5,6 +5,8 @@ html(lang='en')
     meta(charset='utf-8')
     meta(name='viewport', content='width=device-width, initial-scale=1')
     link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
+    link(rel='stylesheet',href="https://fonts.googleapis.com/css?family=Black+Han+Sans")
+    link(rel='stylesheet',href="https://fonts.googleapis.com/css?family=Ubuntu")
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js')
     script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
     link(rel='icon', href='/images/favicon.ico')
@@ -16,38 +18,34 @@ html(lang='en')
           block sidebar
             ul(class='sidebar-nav')
               li
-                img.resize(src="/images/Logo.png" alt="logo") 
+                img.logo.resize(src="/images/Logo.png" alt="logo" title="Logo KLJ") 
                 //dit logo gebruiken als home knop?
               li
                 hr
               li
-                a(href='/menu') Home
+                a.link(href='/menu') Home
               li 
                 hr
               li
-                a(href='/menu/locaties') Alle locaties
+                a.link(href='/menu/locaties') Alle locaties
               li 
-                a(href='/menu/disciplines') Alle disciplines
+                a.link(href='/menu/disciplines') Alle disciplines
               li 
-                a(href='/menu/sportfeesten') Alle sportfeesten
-              //li 
-                //a(href='/menu/wedstrijden') Alle wedstrijden
-              li
-                a(href='/menu/spelers') Alle spelers
+                a.link(href='/menu/sportfeesten') Alle sportfeesten
               li 
-                 a(href='/menu/deelnames') Alle deelnames
+                a.link(href='/menu/deelnames') Alle deelnames
               li
                 hr
               li
                 p1 Administratorfuncties:
               li 
-                a(href='/menu/locatie/create') Locatie toevoegen
+               a(href='/menu/locatie/create') Locatie toevoegen
               li 
-                a(href='/menu/discipline/create') Discipline toevoegen
+               a(href='/menu/discipline/create') Discipline toevoegen
               li 
-                a(href='/menu/sportfeest/create') Sportfeest toevoegen
+               a(href='/menu/sportfeest/create') Sportfeest toevoegen
               li 
-                a(href='/menu/wedstrijd/create') Wedstrijd toevoegen
+               a(href='/menu/wedstrijd/create') Wedstrijd toevoegen
               li 
                a(href='/menu/speler/create') Speler toevoegen
               li 
@@ -56,7 +54,7 @@ html(lang='en')
                 hr
               li
                 form(action="/user/login")
-                     button.btn.btn-primary(type='submit' id='loginbutton' style='width:150px; background-color:red; border:0px') Log in
+                     button.btn.btn-primary.style(type='submit' id='loginbutton' title="Login in") Log in
                 br
               li
                 p(id='loginstatus') Admin
