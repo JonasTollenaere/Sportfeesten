@@ -27,4 +27,6 @@
 
 - website online zetten
 
-=> duplicate wedstrijden mogen niet mogelijk zijn
+- BUG: duplicate wedstrijden mogen niet mogelijk zijn
+
+- BUG: sorteren op score en naam lijkt vaak niet te kloppen
