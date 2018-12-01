@@ -18,7 +18,7 @@ block content
       label(for='datum') Datum van het sportfeest:
       input#datum.form-control(type='date' name='datum' value=(undefined===sportfeest ? '' : sportfeest.datum_form))
 
-    button.btn.btn-primary(type='submit') Submit
+    button.btn.btn-primary.style(type='submit') Voeg toe
 
   if errors 
     ul

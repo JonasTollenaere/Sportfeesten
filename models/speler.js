@@ -6,7 +6,6 @@ var Schema = mongoose.Schema;
 
 var SpelerSchema = new Schema(
     {
-       // speler_id: Schema.Types.ObjectId,
         voornaam: { type: String, required: true, max:100},
         achternaam: { type: String, required: true, max: 100 },
         geboortedatum: { type: Date, required: true },
@@ -18,7 +17,7 @@ var SpelerSchema = new Schema(
 SpelerSchema
     .virtual('volledige_naam')
     .get(function () {
-        return this.achternaam + ", " + this.voornaam;
+        return this.achternaam + " " + this.voornaam;
     });
 
 // Virtual voor url van de speler
