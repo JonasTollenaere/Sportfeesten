@@ -30,7 +30,7 @@ SportfeestSchema
 SportfeestSchema
     .virtual('datum_geformatteerd')
     .get(function () {
-        return moment(this.datum).format('l');
+        return moment(this.datum).format('YYYY-MM-DD');
     });
 
 

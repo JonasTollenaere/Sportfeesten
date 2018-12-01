@@ -9,9 +9,9 @@ block content
       th(onclick='sortTable(1)') Locatie
       th(onclick='sortTable(2)') Discipline
       th(onclick='sortTable(3)') Speler
-      th(onclick='sortTable(4)') Score
+      th(onclick='sortTableNumerically(4)') Score
     each deelname in deelname_list
-      tr
+        tr
             td
                 a(href=deelname.url) #{deelname.wedstrijd.sportfeest.datum_geformatteerd}
             td             
@@ -23,6 +23,8 @@ block content
             td 
                 a(href=deelname.url) #{deelname.score}
                 
+
     else
       li Er zijn geen deelnames.
-    script(src="/javascripts/tablesort.js")
+  script(src="/javascripts/tablesort.js")
+  script(src="/javascripts/tablesortnumerically.js")
