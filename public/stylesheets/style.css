@@ -61,4 +61,12 @@ myTable {
     background-image: none;
     background-color: #b51212;
 }
-
+#myInput {
+    background-image: url('/images/zoek_icoon.ico');
+    background-repeat: no-repeat;
+    width: 100%;
+    font-size: 16px;
+    padding: 12px 20px 12px 40px;
+    border: 1px solid #ddd;
+    margin-bottom: 12px;
+}

@@ -2,7 +2,9 @@ extends layout
 
 block content
   h1= title
-  
+
+  input#myInput(type='text', onkeyup='myFunction()', placeholder='Zoeken naar spelers ...', title='Typ een naam in')
+
   table#myTable
     tr
       th(onclick='sortTable(0)') Datum
@@ -28,3 +30,4 @@ block content
       li Er zijn geen deelnames.
   script(src="/javascripts/tablesort.js")
   script(src="/javascripts/tablesortnumerically.js")
+  script(src="/javascripts/zoekfunctie.js")
