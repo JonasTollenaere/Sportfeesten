@@ -241,6 +241,7 @@ exports.locatie_update_post = [
                 afbeelding.save(function (err) {
                     if (err) { return next(err); };
                 });
+                 // Verwijderen oude afbeelding uit database
                 Locatie
                     .findById(req.params.id)
                     .populate('afbeelding')

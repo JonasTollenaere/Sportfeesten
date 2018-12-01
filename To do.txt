@@ -2,31 +2,23 @@
 
 - Google Maps => embedded media element
 
-- Afbeeldingen? (mogelijk in mongoose?)
-
 - HTML 'table' in alle detailpagina's (in pug bestanden fiksen)
 	=> https://www.nodejsera.com/library/pug/pug-tables.html?fbclid=IwAR3N31GzGq_ZpeVI3obW8dU60WfvD_a38LQ9duluWxfMExXMTYL6M-iP31o
 	=> later sorteerknoppen toevoegen (Jonas heeft al ideetjes, kost wel veel tijd)
 	=> SORTEREN: https://www.w3schools.com/howto/howto_js_sort_table.asp
 
-- AJAX moet voorkomen! Ajax: https://www.w3schools.com/xml/ajax_intro.asp
-	=> Mogelijk handig bij forms om deelnames te creëren (documenteren voor/na voor presentatie!)
-
 - Presentatie: (Elien)
 	=> UML schema maken
 	=> Routing schema maken
 
-- Nadenken over homepagine (indexrouter) + homepagina /menu (Elien)
-
-- Authenticatie voor adminsitrators (zie hint toledo:    Authenticatie: http://www.passportjs.org/) 	
-	=> zou straight forward moeten kunnen toegepast worden op routes in menu.js (nl. deletes en updates)
-	=> mooie loginknop linksonder! JONAS
+- Authenticatie
 	=> na inloggen moet men teruggestuurd worden naar vorige pagina, ingewikkelder dan terugsturen naar referer
 
 => Third party API's 2x
 
 - website online zetten
 
-- BUG: duplicate wedstrijden mogen niet mogelijk zijn
+- BUG: duplicate wedstrijden mogen niet mogelijk zijn => dit gebeurt bij alle klassen als je ze update
+=> controle duplicaten bij update form (JONAS)
 
-- BUG: sorteren op score en naam lijkt vaak niet te kloppen
+- Niet weergeven administratorshizzle wanneer niet ingelogd als admin (JONAS)

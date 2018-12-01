@@ -1,6 +1,7 @@
 var Discipline = require('../models/discipline');
 var Wedstrijd = require('../models/wedstrijd');
 var Locatie = require('../models/locatie');
+var Afbeelding = require('../models/afbeelding');
 var async = require('async');
 const { body, validationResult } = require('express-validator/check');
 const { sanitizeBody } = require('express-validator/filter');
@@ -59,9 +60,29 @@ exports.discipline_create_post = [
         // Extract the validation errors from a request.
         const errors = validationResult(req);
 
+        // Indien een afbeelding doorgestuurd werd, wordt er een nieuw afbeeldingsobject gemaakt
+        var afbeelding;
+
+        if (req.files.afbeelding) {
+            if (['image/jpeg', 'image/png'].includes(req.files.afbeelding.mimetype)) {
+                afbeelding = new Afbeelding({
+                    data: req.files.afbeelding.data,
+                    type: req.files.afbeelding.mimetype
+                });
+                afbeelding.save(function (err) {
+                    if (err) { return next(err); };
+                });
+            }
+            else body('afbeelding').custom(value => { return Promise.reject('Het doorgestuurde bestand is geen geldige afbeelding') });
+        }
+
         // Create a discipline object with escaped and trimmed data.
         var discipline = new Discipline(
-            { naam: req.body.naam, beschrijving: req.body.beschrijving}
+            {
+                naam: req.body.naam,
+                beschrijving: req.body.beschrijving,
+                afbeelding: afbeelding
+            }
         );
 
 
@@ -126,7 +147,10 @@ exports.discipline_delete_post = function (req, res, next) {
 
     async.parallel({
         discipline: function (callback) {
-            Discipline.findById(req.body.disciplineid).exec(callback)
+            Discipline
+                .findById(req.body.disciplineid)
+                .populate('afbeelding')
+                .exec(callback)
         },
         discipline_wedstrijden: function (callback) {
             Wedstrijd
@@ -144,6 +168,14 @@ exports.discipline_delete_post = function (req, res, next) {
             return;
         }
         else {
+
+            // Verwijderen afbeelding van te verwijderen locatie
+            if (results.discipline.afbeelding) {
+                Afbeelding.findByIdAndRemove(results.discipline.afbeelding._id, function deleteAfbeelding(err) {
+                    if (err) { return next(err); }
+                });
+            }
+
             Discipline.findByIdAndRemove(req.body.disciplineid, function deleteDiscipline(err) {
                 if (err) { return next(err); }
                 // Success - go to discipline list
@@ -188,10 +220,52 @@ exports.discipline_update_post = [
         // Extract the validation errors from a request.
         const errors = validationResult(req);
 
+        // Indien een afbeelding doorgestuurd werd, wordt er een nieuw afbeeldingsobject gemaakt en het oude verwijderd uit de database, anders wordt de oude afbeelding opgehaald
+        var afbeelding;
+        if (req.files.afbeelding) {
+            if (['image/jpeg', 'image/png'].includes(req.files.afbeelding.mimetype)) {
+                afbeelding = new Afbeelding({
+                    data: req.files.afbeelding.data,
+                    type: req.files.afbeelding.mimetype
+                });
+                afbeelding.save(function (err) {
+                    if (err) { return next(err); };
+                });
+                // Verwijderen oude afbeelding uit database
+                Discipline
+                    .findById(req.params.id)
+                    .populate('afbeelding')
+                    .exec(function (err, discipline) {
+                        if (err) { return next(err); }
+                        else {
+                            if (discipline.afbeelding) {
+                                Afbeelding.findByIdAndRemove(discipline.afbeelding._id, function deleteAfbeelding(err) {
+                                    if (err) { return next(err); }
+                                });
+                            }
+                        }
+                    });
+
+            }
+            else body('afbeelding').custom(value => { return Promise.reject('Het doorgestuurde bestand is geen geldige afbeelding') });
+        }
+        else {
+            Discipline
+                .findById(req.params.id)
+                .populate('afbeelding')
+                .exec(function (err, discipline) {
+                    if (err) { return next(err); }
+                    else {
+                        afbeelding = discipline.afbeelding
+                    }
+                });
+        }
+
         var locatie = new Locatie(
             {
                 naam: req.body.naam,
                 beschrijving: req.body.beschrijving,
+                afbeelding: afbeelding,
                 _id: req.params.id //This is required, or a new ID will be assigned!
             });
 

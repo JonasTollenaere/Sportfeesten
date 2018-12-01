@@ -6,6 +6,7 @@ var DisciplineSchema = new Schema(
     {
         naam: { type: String, required: true, max: 100 },
         beschrijving: { type: String, required: true, max: 100 },
+        afbeelding: { type: Schema.Types.ObjectId, ref: 'Afbeelding', required: false }
     }
 );
 

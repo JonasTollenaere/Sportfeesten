@@ -3,7 +3,7 @@ extends layout
 block content
   h1 #{title}
 
-  form(method='POST' action='')
+  form(method='POST' action='' enctype='multipart/form-data')
     div.form-group
       label(for='naam') Naam:
       input#naam.form-control(type='text' placeholder='Touwtrekken, Hardlopen etc.' name='naam' value=(undefined===discipline ? '' : discipline.naam) autofocus autocomplete="off")
@@ -14,7 +14,9 @@ block content
         textarea#beschrijving.form-control(type='text' placeholder='Beschrijving van de discipline' name='beschrijving' autocomplete="off" rows=8) #{discipline.beschrijving}
       else
         textarea#beschrijving.form-control(type='text' placeholder='Beschrijving van de discipline' name='beschrijving' autocomplete="off" rows=8)
-  
+    div.form-group
+      label(for='afbeelding') Afbeelding:
+      input#afbeelding.form-control(type='file' name='afbeelding' accept='image/*' autocomplete="off")
   
     button.btn.btn-primary.style(type='submit') Voeg toe
 

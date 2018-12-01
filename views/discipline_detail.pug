@@ -7,6 +7,10 @@ block content
      h4 Beschrijving: 
      h5 #{discipline.beschrijving}
 
+     if(discipline.afbeelding)
+         h4 Afbeelding:
+         img(src="/menu/afbeelding/"+discipline.afbeelding)
+
      hr
      p
         a(href=discipline.url+'/delete') Verwijder discipline
