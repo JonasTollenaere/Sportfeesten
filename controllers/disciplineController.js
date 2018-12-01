@@ -169,7 +169,7 @@ exports.discipline_delete_post = function (req, res, next) {
         }
         else {
 
-            // Verwijderen afbeelding van te verwijderen locatie
+            // Verwijderen afbeelding van te verwijderen discipline
             if (results.discipline.afbeelding) {
                 Afbeelding.findByIdAndRemove(results.discipline.afbeelding._id, function deleteAfbeelding(err) {
                     if (err) { return next(err); }
@@ -261,7 +261,7 @@ exports.discipline_update_post = [
                 });
         }
 
-        var locatie = new Locatie(
+        var discipline = new Discipline(
             {
                 naam: req.body.naam,
                 beschrijving: req.body.beschrijving,
@@ -276,7 +276,7 @@ exports.discipline_update_post = [
         }
         else {
             // Data from form is valid. Update the record.
-            Discipline.findByIdAndUpdate(req.params.id, locatie, {}, function (err, dediscipline) {
+            Discipline.findByIdAndUpdate(req.params.id, discipline, {}, function (err, dediscipline) {
                 if (err) { return next(err); }
                 // Successful - redirect to discipline detail page.
                 res.redirect(dediscipline.url);
