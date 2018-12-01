@@ -202,45 +202,48 @@ exports.deelname_delete_post = function (req, res, next) {
 
 // Weergeven deelname update form bij GET
 exports.deelname_update_get = function (req, res, next) {
-    async.parallel({
-        deelname: function (callback) {
-            Deelname
-                .findById(req.params.id)
-                .populate('wedstrijd')
-                .populate({ path: 'wedstrijd', populate: { path: 'sportfeest' } })
-                .populate('speler')
-                .exec(callback);
-        },
-        wedstrijden: function (callback) {
-            Wedstrijd
-                .find(callback)
-                .populate('discipline')
-                .populate('sportfeest')
-                .populate({ path: 'sportfeest', populate: { path: 'locatie' } });
-        },
-        spelers: function (callback) {
-            Speler
-                .find(callback)
-                .populate('thuislocatie')
-                .sort('naam');
-        },
-        sportfeesten: function (callback) {
-            Sportfeest
-                .find(callback)
-                .populate('locatie');
-        },
-    }, function (err, results) {
-        if (err) { return next(err); }
-        if (results.deelname == null) { // No results.
-            var err = new Error('Deelname not found');
-            err.status = 404;
-            return next(err);
-        }
-        // Success.
+    Deelname
+        .findById(req.params.id)
+        .populate('wedstrijd')
+        .populate({ path: 'wedstrijd', populate: { path: 'sportfeest' } })
+        .populate('speler')
+        .exec(function (err, deelname) {
+            if (err) { return next(err); }
 
-        res.render('deelname_form', { title: 'Update deelname', spelers: results.spelers, wedstrijden: results.wedstrijden, sportfeesten: results.sportfeesten, deelname: results.deelname });
-    });
+            async.parallel({
+                wedstrijden: function (callback) {
+                    Wedstrijd
+                        .find({ sportfeest: deelname.wedstrijd.sportfeest })
+                        .populate('discipline')
+                        .populate('sportfeest')
+                        .populate({ path: 'sportfeest', populate: { path: 'locatie' } })
+                        .exec(callback);
+                },
+                spelers: function (callback) {
+                    Speler
+                        .find(callback)
+                        .populate('thuislocatie')
+                        .sort('naam');
+                },
+                sportfeesten: function (callback) {
+                    Sportfeest
+                        .find(callback)
+                        .populate('locatie');
+                },
+            }, function (err, results) {
+                if (err) { return next(err); }
+                if (deelname == null) { // No results.
+                    var err = new Error('Deelname not found');
+                    err.status = 404;
+                    return next(err);
+                }
+                // Success.
 
+                res.render('deelname_form', { title: 'Update deelname', spelers: results.spelers, wedstrijden: results.wedstrijden, sportfeesten: results.sportfeesten, deelname: deelname });
+            });
+            
+        });
+    
 };
 
 // Verwerken update form bij POST

@@ -17,8 +17,13 @@ block content
     
     div.form-group
       label(for='wedstrijd' id='wedstrijdlabel') Discipline:
-      select#wedstrijd.form-control(type='select' placeholder='Selecteer wedstrijd' name='wedstrijd' required='true' disabled)
-        option(disabled selected style='display:none') Selecteer een sportfeest om de aanwezige disciplines weer te geven
+      if deelname
+          select#wedstrijd.form-control(type='select' placeholder='Selecteer wedstrijd' name='wedstrijd' required='true')
+            for wedstrijd in wedstrijden
+                option(value=wedstrijd._id selected=((wedstrijd._id.toString()==deelname.wedstrijd._id||wedstrijd._id.toString()==deelname.wedstrijd) ? 'selected' : false)) #{wedstrijd.discipline.naam}
+      else
+          select#wedstrijd.form-control(type='select' placeholder='Selecteer wedstrijd' name='wedstrijd' required='true' disabled)
+            option(disabled selected style='display:none') Selecteer een sportfeest om de aanwezige disciplines weer te geven
    
     div.form-group
       label(for='speler') Speler:
@@ -34,8 +39,10 @@ block content
       label(for='score') Score:
       input#score.form-control(type='number' placeholder='Score' name='score' required='true' value=(undefined===deelname ? '' : deelname.score) )
 
-
-    button.btn.btn-primary.style(type='submit' id='submitbutton' disabled) Voeg toe
+    if deelname
+        button.btn.btn-primary.style(type='submit' id='submitbutton') Voeg toe
+    else
+        button.btn.btn-primary.style(type='submit' id='submitbutton' disabled) Voeg toe
 
   if errors 
     ul
