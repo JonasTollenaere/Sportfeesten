@@ -1,7 +1,7 @@
 var Locatie = require('../models/locatie');
 var Speler = require('../models/speler');
-var Wedstrijd = require('../models/wedstrijd');
-var Sportfeest = require('../models/sportfeest')
+var Sportfeest = require('../models/sportfeest');
+var Afbeelding = require('../models/afbeelding');
 
 var async = require('async');
 const { body, validationResult } = require('express-validator/check');
@@ -60,17 +60,34 @@ exports.locatie_create_post = [
 
     // Process request after validation and sanitization.
     (req, res, next) => {
-
+        
         // Extract the validation errors from a request.
-        const errors = validationResult(req);
+        var errors = validationResult(req);
 
+        // Indien een afbeelding doorgestuurd werd, wordt er een nieuw afbeeldingsobject gemaakt
+        var afbeelding;
+
+        if (req.files.afbeelding) {
+            if (['image/jpeg', 'image/png'].includes(req.files.afbeelding.mimetype)) {
+                afbeelding = new Afbeelding({
+                    data: req.files.afbeelding.data,
+                    type: req.files.afbeelding.mimetype
+                });
+                afbeelding.save(function (err) {
+                    if (err) { return next(err); };
+                });
+            }
+            else body('afbeelding').custom(value => { return Promise.reject('Het doorgestuurde bestand is geen geldige afbeelding') });
+        }
+        
         // Create a Locatie object with escaped and trimmed data.
         var locatie = new Locatie(
             {
                 naam: req.body.naam,
                 provincie: req.body.provincie,
                 postcode: req.body.postcode,
-                beschrijving: req.body.beschrijving
+                beschrijving: req.body.beschrijving,
+                afbeelding: afbeelding
             });
 
         if (!errors.isEmpty()) {
@@ -141,29 +158,30 @@ exports.locatie_delete_post = function (req, res, next) {
 
     async.parallel({
         locatie: function (callback) {
-            Locatie.findById(req.body.locatieid).exec(callback)
+            Locatie
+                .findById(req.body.locatieid)
+                .populate('afbeelding')
+                .exec(callback)
         },
         locatie_spelers: function (callback) {
             Speler.find({ 'thuislocatie': req.body.locatieid }).exec(callback)
         },
-        locatie_wedstrijden: function (callback) {
-            Wedstrijd.find({ 'locatie': req.body.locatieid }).populate('speler').populate('discipline').exec(callback)
+        locatie_sportfeesten: function (callback) {
+            Sportfeest.find({ 'locatie': req.body.locatieid }).exec(callback)
         },
     }, function (err, results) {
         if (err) { return next(err); }
-        if (results.locatie_spelers.length > 0) {
-            res.render('locatie_delete', { title: 'Verwijder locatie', locatie: results.locatie, locatie_spelers: results.locatie_spelers, locatie_wedstrijden: results.locatie_wedstrijden })
+        if (results.locatie_spelers.length > 0 || results.locatie_sportfeesten.length>0) {
+            res.render('locatie_delete', { title: 'Verwijder locatie', locatie: results.locatie, locatie_spelers: results.locatie_spelers, locatie_sportfeesten: results.locatie_sportfeesten })
         }
         else {
-            // Verwijderen alle wedstrijden op de te verwijderen locatie
-            results.locatie_wedstrijden.forEach(function (wedstrijd, err) {
-                Wedstrijd.findByIdAndRemove(wedstrijd._id, function deleteWedstrijd(err) {
-                    if (err) {
-                        return next(err);
-                    }
+            
+            // Verwijderen afbeelding van te verwijderen locatie
+            if (results.locatie.afbeelding) {
+                Afbeelding.findByIdAndRemove(results.locatie.afbeelding._id, function deleteAfbeelding(err) {
+                    if (err) { return next(err); }
                 });
-
-            });
+            }
             // Verwijderen locatie
             Locatie.findByIdAndRemove(req.body.locatieid, function deleteLocatie(err) {
                 if (err) { return next(err); } 
@@ -212,13 +230,53 @@ exports.locatie_update_post = [
 
         // Extract the validation errors from a request.
         const errors = validationResult(req);
+        // Indien een afbeelding doorgestuurd werd, wordt er een nieuw afbeeldingsobject gemaakt en het oude verwijderd uit de database, anders wordt de oude afbeelding opgehaald
+        var afbeelding;
+        if (req.files.afbeelding) {
+            if (['image/jpeg', 'image/png'].includes(req.files.afbeelding.mimetype)) {
+                afbeelding = new Afbeelding({
+                    data: req.files.afbeelding.data,
+                    type: req.files.afbeelding.mimetype
+                });
+                afbeelding.save(function (err) {
+                    if (err) { return next(err); };
+                });
+                Locatie
+                    .findById(req.params.id)
+                    .populate('afbeelding')
+                    .exec(function (err, locatie) {
+                        if (err) { return next(err); }
+                        else {
+                            if (locatie.afbeelding) {
+                                Afbeelding.findByIdAndRemove(locatie.afbeelding._id, function deleteAfbeelding(err) {
+                                    if (err) { return next(err); }
+                                });
+                            }
+                        }
+                    });   
 
+            }
+            else body('afbeelding').custom(value => { return Promise.reject('Het doorgestuurde bestand is geen geldige afbeelding') });
+        }
+        else {
+            Locatie
+                .findById(req.params.id)
+                .populate('afbeelding')
+                .exec(function (err, locatie) {
+                    if (err) { return next(err); }
+                    else {
+                        afbeelding = locatie.afbeelding
+                    }
+                });    
+        }   
+        
         var locatie = new Locatie(
             {
                 naam: req.body.naam,
                 provincie: req.body.provincie,
                 postcode: req.body.postcode,
                 beschrijving: req.body.beschrijving,
+                afbeelding: afbeelding,
                 _id: req.params.id //This is required, or a new ID will be assigned!
             });
 

@@ -6,6 +6,7 @@ var bodyParser = require('body-parser');
 var logger = require('morgan');
 var passport = require('passport');
 var session = require('express-session');
+var fileupload = require('express-fileupload');
 
 
 var indexRouter = require('./routes/index');
@@ -33,6 +34,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(fileupload());
 
 // Passport and middleware setup
 app.use(session({ secret: 'RFJ2hGclIgRjPYjhvrB2', resave: true, saveUninitialized: true }));

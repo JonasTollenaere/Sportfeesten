@@ -10,6 +10,10 @@ block content
      h4 Beschrijving: 
      h5 #{locatie.beschrijving}
 
+     if(locatie.afbeelding)
+         h4 Afbeelding:
+         img(src="/menu/afbeelding/"+locatie.afbeelding)
+
   hr
   p
     a(href=locatie.url+'/delete') Verwijder deze locatie

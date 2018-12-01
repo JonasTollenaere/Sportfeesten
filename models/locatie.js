@@ -7,8 +7,8 @@ var LocatieSchema = new Schema(
         naam: { type: String, required: true, max: 100 },
         provincie: { type: String, required: true, max: 100 },
         postcode: { type: Number, required: true },
-        beschrijving: { type: String, required: true, max: 200 }
-        //coordinaat: { type: [Number] }, //kan later gebruikt worden voor pinpoint op map
+        beschrijving: { type: String, required: true, max: 200 },
+        afbeelding: { type: Schema.Types.ObjectId, ref:'Afbeelding', required: false}
     }
 );
 

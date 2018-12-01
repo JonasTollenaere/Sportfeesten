@@ -11,6 +11,7 @@ var speler_controller = require('../controllers/spelerController');
 var index_controller = require('../controllers/indexController');
 var provincie_controller = require('../controllers/provincieController');
 var user_controller = require('../controllers/userController');
+var afbeelding_controller = require('../controllers/afbeeldingController');
 
 /// Deelname routes ///
 
@@ -45,7 +46,7 @@ router.get('/getWedstrijden/:id', deelname_controller.get_wedstrijdensportfeest)
 
 /// Wedstrijd routes ///
 
-// GET menu home page -------------- kan nog aangepast worden   -   -   -   -   -   -   -   -   -       --  -   -   -
+// GET menu home page
 router.get('/', index_controller.index);
 
 // GET request voor toevoegen wedstrijd
@@ -129,7 +130,6 @@ router.get('/locatie/:id', locatie_controller.locatie_detail);
 router.get('/locaties', locatie_controller.locatie_list);
 
 
-
 /// Discipline routes ///
 
 // GET request voor toevoegen discipline
@@ -191,5 +191,9 @@ router.get('/speler/:id', speler_controller.speler_detail);
 
 // GET request voor 1 provincie
 router.get('/provincie/:provincienaam', provincie_controller.provincie_detail);
+
+
+/// Afbeelding routes ///
+router.get('/afbeelding/:id', afbeelding_controller.afbeelding_get);
 
 module.exports = router;

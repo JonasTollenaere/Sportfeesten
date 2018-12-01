@@ -194,7 +194,7 @@ exports.wedstrijd_delete_post = function (req, res, next) {
         // Verwijderen wedstrijd
         Wedstrijd.findByIdAndRemove(req.body.wedstrijdid, function deleteWedstrijd(err) {
             if (err) { return next(err); }
-            res.redirect('/menu/wedstrijden');
+            res.redirect('/menu');
         });
         
     });
