@@ -17,15 +17,6 @@ SportfeestSchema
         return '/menu/sportfeest/' + this._id;
     });
 
-/*
-// Virtual voor de geformatteerde datum (oud)
-SportfeestSchema
-    .virtual('datum_geformatteerd')
-    .get(function () {
-        return moment(this.datum).format('MMM Do, YYYY');
-    });
-*/
-
 // Virtual voor de geformatteerde datum
 SportfeestSchema
     .virtual('datum_geformatteerd')

@@ -9,7 +9,8 @@ block content
 
      if(discipline.afbeelding)
          h4 Afbeelding:
-         img(src="/menu/afbeelding/"+discipline.afbeelding)
+         a(href=discipline.afbeelding.url +'/show')
+            img(src="/menu/afbeelding/"+discipline.afbeelding._id width="500px" title="Klik om de afbeelding op ware grootte te bekijken")
 
      hr
      p

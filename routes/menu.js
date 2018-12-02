@@ -195,5 +195,6 @@ router.get('/provincie/:provincienaam', provincie_controller.provincie_detail);
 
 /// Afbeelding routes ///
 router.get('/afbeelding/:id', afbeelding_controller.afbeelding_get);
+router.get('/afbeelding/:id/show', afbeelding_controller.afbeelding_detail);
 
 module.exports = router;

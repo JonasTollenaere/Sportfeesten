@@ -22,7 +22,9 @@ exports.discipline_detail = function (req, res, next) {
 
     async.parallel({
         discipline: function (callback) {
-            Discipline.findById(req.params.id)
+            Discipline
+                .findById(req.params.id)
+                .populate('afbeelding')
                 .exec(callback);
         },
 

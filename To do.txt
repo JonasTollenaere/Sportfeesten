@@ -20,4 +20,6 @@
 
 - Niet weergeven administratorshizzle wanneer niet ingelogd als admin (JONAS)
 
+- Overleggen weergeven alle spelers en verbergen alle deelnames?
+
 

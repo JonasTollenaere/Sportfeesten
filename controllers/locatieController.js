@@ -22,7 +22,9 @@ exports.locatie_list = function (req, res, next) {
 exports.locatie_detail = function (req, res, next) {
     async.parallel({
         locatie: function (callback) {
-            Locatie.findById(req.params.id)
+            Locatie
+                .findById(req.params.id)
+                .populate('afbeelding')
                 .exec(callback);
         },
 
