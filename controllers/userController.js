@@ -11,14 +11,14 @@ passport.deserializeUser(Gebruiker.deserializeUser());
 /// USER ROUTES
 // Login form weergeven
 exports.login_get = function (req, res) {
-    res.render('login_form', {title: 'Aanmelden als administrator'});
+    res.render('login_form', {title: 'Aanmelden als administrator', referer: req.headers.referer||'/'});
 };
 
 // Login post verwerken
 exports.login_post = [
     passport.authenticate('local', { failureRedirect: '/user/login' }),
     function (req, res) {
-        res.redirect('/');
+        res.redirect(req.body.referer);
     }
 ]
 
