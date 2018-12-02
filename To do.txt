@@ -11,10 +11,7 @@
 	=> UML schema maken
 	=> Routing schema maken
 
-- Authenticatie
-	=> na inloggen moet men teruggestuurd worden naar vorige pagina, ingewikkelder dan terugsturen naar referer
-
-=> Third party API's 2x
+=> Third party API's 2x!!!
 
 - website online zetten
 
@@ -22,3 +19,5 @@
 => controle duplicaten bij update form (JONAS)
 
 - Niet weergeven administratorshizzle wanneer niet ingelogd als admin (JONAS)
+
+

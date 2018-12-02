@@ -18,7 +18,8 @@ exports.login_get = function (req, res) {
 exports.login_post = [
     passport.authenticate('local', { failureRedirect: '/user/login' }),
     function (req, res) {
-        res.redirect(req.body.referer);
+        var referer = req.body.referer
+        res.redirect((referer=='/user/login') ? referer : '/menu');
     }
 ]
 
