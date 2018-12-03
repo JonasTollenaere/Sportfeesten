@@ -1,11 +1,9 @@
 var Sportfeest = require('../models/sportfeest');
 var Wedstrijd = require('../models/wedstrijd');
 var Locatie = require('../models/locatie');
-var Deelname = require('../models/deelname');
 var async = require('async');
 const { body, validationResult } = require('express-validator/check');
 const { sanitizeBody } = require('express-validator/filter');
-var ObjectId = require('mongodb').ObjectID;
 
 // Lijst van alle sportfeesten weergeven
 exports.sportfeest_list = function (req, res, next) {
@@ -33,53 +31,6 @@ exports.sportfeest_detail = function (req, res, next) {
                 .populate({ path: 'sportfeest', populate: { path: 'locatie' } })
                 .exec(callback);
         },
-        wedstrijden: function (callback) {
-            Deelname
-                .aggregate([
-                {
-                    $lookup: {
-                        from: 'wedstrijds',
-                        localField: 'wedstrijd',
-                        foreignField: '_id',
-                        as: 'wedstrijdfield'
-                    }
-                },
-                {
-                    $project: {
-                        sportfeest: '$wedstrijdfield.sportfeest',
-                        discipline: '$wedstrijdfield.discipline',
-                        wedstrijdurl: '$wedstrijd'
-                    }
-                },
-               {
-                    $lookup: {
-                        from: 'disciplines',
-                        localField: 'discipline',
-                        foreignField: '_id',
-                        as: 'discipline'
-                    }
-                },
-                {
-                    $project: {
-                        disciplinenaam: '$discipline.naam',
-                        sportfeest: 1,
-                        wedstrijdurl: 1
-                    }
-                },
-                {
-                    $match: {
-                      sportfeest: ObjectId(req.params.id)
-                    }
-                },
-                {   $group: {
-                        _id: '$disciplinenaam',
-                        count: { $sum: 1 },
-                        wedstrijdid: {$first: '$wedstrijdurl'}
-                    }
-                   
-                }
-            ]).exec(callback)
-        },
 
     }, function (err, results) {
         if (err) { return next(err); }
@@ -90,7 +41,7 @@ exports.sportfeest_detail = function (req, res, next) {
         }
 
         // Successful, so render
-        res.render('sportfeest_detail', { title: 'Sportfeest Details', sportfeest: results.sportfeest, sportfeest_wedstrijden: results.sportfeest_wedstrijden, wedstrijden: results.wedstrijden});
+        res.render('sportfeest_detail', { title: 'Sportfeest Details', sportfeest: results.sportfeest, sportfeest_wedstrijden: results.sportfeest_wedstrijden });
     });
 };
 

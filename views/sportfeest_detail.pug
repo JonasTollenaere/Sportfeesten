@@ -9,11 +9,10 @@ block content
     h4 Wedstrijden
     
     dl
-    each wedstrijd in wedstrijden
+    each wedstrijd in sportfeest_wedstrijden
       dt 
-        a(href= '/menu/wedstrijd/' + wedstrijd.wedstrijdid) #{wedstrijd._id}
-      dd Aantal deelnames: #{wedstrijd.count}
-
+        a(href=wedstrijd.url) #{wedstrijd.discipline.naam}
+      dd Aantal deelnames: ...
 
     else
       p Dit sportfeest bevat geen wedstrijden.
