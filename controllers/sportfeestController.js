@@ -9,6 +9,7 @@ const { sanitizeBody } = require('express-validator/filter');
 exports.sportfeest_list = function (req, res, next) {
     Sportfeest.find()
         .populate('locatie')
+        .sort({'datum':-1})
         .exec(function (err, list_sportfeesten) {
             if (err) { return next(err); }
             //Successful, so render

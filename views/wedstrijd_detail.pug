@@ -8,13 +8,19 @@ block content
 
     h4 Deelnames
     
-    dl
-    each deelname in wedstrijd_deelnames
-      dt 
-        a(href=deelname.url) #{deelname.speler.voornaam} #{deelname.speler.achternaam} - Score = #{deelname.score}
-
-    else
-      p Deze wedstrijd heeft geen deelnames.
+    table#myTable
+        tr
+            th(onclick='sortTable(0)') Speler
+            th(onclick='sortTableNumerically(1)') Score
+        each deelname in wedstrijd_deelnames
+            tr
+                td 
+                    a(href=deelname.speler.url) #{deelname.speler.voornaam} #{deelname.speler.achternaam}
+                td
+                    a(href=deelname.url) #{deelname.score}
+    
+        else
+          p Deze wedstrijd heeft geen deelnames.
 
     if(authenticated)
         hr
@@ -22,3 +28,6 @@ block content
          a(href=wedstrijd.url+'/delete') Verwijder deze wedstrijd
         p
          a(href=wedstrijd.url+'/update') Pas deze wedstrijd aan
+    script(src="/javascripts/tablesortnumerically.js")
+    script(src="/javascripts/tablesort.js")
+    

@@ -41,6 +41,7 @@ exports.wedstrijd_detail = function (req, res, next) {
             Deelname.find({ 'wedstrijd': req.params.id })
                 .populate('wedstrijd')
                 .populate('speler')
+                .sort({ 'score': -1})
                 .exec(callback);
         },
 
