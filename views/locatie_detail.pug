@@ -15,8 +15,9 @@ block content
          a(href=locatie.afbeelding.url +'/show')
             img(src="/menu/afbeelding/"+locatie.afbeelding._id width="500px" title="Klik om de afbeelding op ware grootte te bekijken")
 
-  hr
-  p
-    a(href=locatie.url+'/delete') Verwijder deze locatie
-  p
-     a(href=locatie.url+'/update') Wijzig deze locatie
+     if(authenticated)
+        hr
+        p
+            a(href=locatie.url+'/delete') Verwijder deze locatie
+        p
+            a(href=locatie.url+'/update') Wijzig deze locatie

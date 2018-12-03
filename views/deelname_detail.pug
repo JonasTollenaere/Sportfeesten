@@ -10,8 +10,9 @@ block content
   p Datum: #{deelname.wedstrijd.sportfeest.datum_geformatteerd}
   p Discipline: #{deelname.wedstrijd.discipline.naam}
   p Score: #{deelname.score}
-  hr
-  p
-    a(href=deelname.url+'/delete') Verwijder deelname
-  p
-    a(href=deelname.url+'/update') Wijzig deelname
+  if(authenticated)
+      hr
+      p
+        a(href=deelname.url+'/delete') Verwijder deelname
+      p
+        a(href=deelname.url+'/update') Wijzig deelname

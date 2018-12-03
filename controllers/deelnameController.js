@@ -33,7 +33,7 @@ exports.deelname_detail = function (req, res, next) {
         .exec(function (err, deelname) {
             if (err) { return next(err); }
             //Successful, so render
-            res.render('deelname_detail', { title: 'Deelnames', deelname: deelname });
+            res.render('deelname_detail', { title: 'Deelnames', deelname: deelname, authenticated: req.isAuthenticated() });
         });
 };
 

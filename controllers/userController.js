@@ -31,7 +31,12 @@ exports.logout_get = function (req, res) {
 
 // Opgevraagde gebruikerinfo opsturen
 exports.get_gebruiker_info = function (req, res) {
-    res.send(req.session.passport.user);
+    try {
+        res.send(req.session.passport.user);
+    }
+    catch (err) {
+        res.send();
+    }
 }
 
 // Controleren of een user ingelogd is

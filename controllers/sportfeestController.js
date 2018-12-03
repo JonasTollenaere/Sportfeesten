@@ -41,7 +41,7 @@ exports.sportfeest_detail = function (req, res, next) {
         }
 
         // Successful, so render
-        res.render('sportfeest_detail', { title: 'Sportfeest Details', sportfeest: results.sportfeest, sportfeest_wedstrijden: results.sportfeest_wedstrijden });
+        res.render('sportfeest_detail', { title: 'Sportfeest Details', sportfeest: results.sportfeest, sportfeest_wedstrijden: results.sportfeest_wedstrijden, authenticated: req.isAuthenticated() });
     });
 };
 

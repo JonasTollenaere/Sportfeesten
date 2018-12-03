@@ -36,7 +36,7 @@ exports.locatie_detail = function (req, res, next) {
             return next(err);
         }
         // Successful, so render
-        res.render('locatie_detail', { title: 'Locatie Details', locatie: results.locatie});
+        res.render('locatie_detail', { title: 'Locatie Details', locatie: results.locatie, authenticated: req.isAuthenticated()});
     });
 };
 

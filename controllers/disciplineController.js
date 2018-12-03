@@ -36,7 +36,7 @@ exports.discipline_detail = function (req, res, next) {
             return next(err);
         }
         // Successful, so render
-        res.render('discipline_detail', { title: 'Discipline Details', discipline: results.discipline });
+        res.render('discipline_detail', { title: 'Discipline Details', discipline: results.discipline, authenticated: req.isAuthenticated() });
     });
 };
 

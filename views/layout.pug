@@ -29,33 +29,37 @@ html(lang='en')
               li 
                 a.link(href='/menu/sportfeesten') Alle sportfeesten
               li 
-                a.link(href='/menu/deelnames') Alle deelnames
+                a.link(href='/menu/deelnames' id=deelnamelink) Alle deelnames
               li
                 hr
-              li
-                p1 Administratorfuncties:
-              li 
-               a(href='/menu/locatie/create') Locatie toevoegen
-              li 
-               a(href='/menu/discipline/create') Discipline toevoegen
-              li 
-               a(href='/menu/sportfeest/create') Sportfeest toevoegen
-              li 
-               a(href='/menu/wedstrijd/create') Wedstrijd toevoegen
-              li 
-               a(href='/menu/speler/create') Speler toevoegen
-              li 
-               a(href='/menu/deelname/create') Deelname toevoegen
-              li 
-                hr
-              li
-                form(action="/user/login")
-                     button.btn.btn-primary.style(type='submit' id='loginbutton' title="Login in") Log in
-                br
-              li
-                p(id='loginstatus') Admin
-              li
-                hr
+              div(id='adminDiv' hidden)
+                  li
+                    form(action="/user/logout")
+                         button.btn.btn-primary.style(type='submit' title="Log out") Log out
+                    br
+                  li
+                    p1 Administratorfuncties:
+                  li 
+                   a(href='/menu/locatie/create') Locatie toevoegen
+                  li 
+                   a(href='/menu/discipline/create') Discipline toevoegen
+                  li 
+                   a(href='/menu/sportfeest/create') Sportfeest toevoegen
+                  li 
+                   a(href='/menu/wedstrijd/create') Wedstrijd toevoegen
+                  li 
+                   a(href='/menu/speler/create') Speler toevoegen
+                  li 
+                   a(href='/menu/deelname/create') Deelname toevoegen
+                  li 
+                   hr
+
+              div(id='loginDiv')
+                  li
+                    form(action="/user/login")
+                         button.btn.btn-primary.style(type='submit' title="Log in") Log in
+                  li
+                    hr
                 
         div(class='col-sm-10')
           block content

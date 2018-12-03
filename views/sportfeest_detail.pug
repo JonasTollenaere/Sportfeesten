@@ -12,12 +12,13 @@ block content
     each wedstrijd in sportfeest_wedstrijden
       dt 
         a(href=wedstrijd.url) #{wedstrijd.discipline.naam}
-      dd Aantal deelnames: ...
 
     else
       p Dit sportfeest bevat geen wedstrijden.
-    hr
-    p
-        a(href=sportfeest.url+'/delete') Verwijder dit sportfeest
-    p
-        a(href=sportfeest.url+'/update') Wijzig dit sportfeest
+    
+    if(authenticated)
+        hr
+        p
+            a(href=sportfeest.url+'/delete') Verwijder dit sportfeest
+        p
+            a(href=sportfeest.url+'/update') Wijzig dit sportfeest

@@ -52,7 +52,7 @@ exports.wedstrijd_detail = function (req, res, next) {
             return next(err);
         }
         // Successful, so render
-        res.render('wedstrijd_detail', { title: 'Wedstrijd Details', wedstrijd: results.wedstrijd, wedstrijd_deelnames: results.wedstrijd_deelnames });
+        res.render('wedstrijd_detail', { title: 'Wedstrijd Details', wedstrijd: results.wedstrijd, wedstrijd_deelnames: results.wedstrijd_deelnames, authenticated: req.isAuthenticated() });
     });
 };
 

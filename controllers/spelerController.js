@@ -44,7 +44,7 @@ exports.speler_detail = function (req, res, next) {
             return next(err);
         }
         // Successful, so render
-        res.render('speler_detail', { title: 'Speler Details', speler: results.speler, speler_deelnames: results.speler_deelnames });
+        res.render('speler_detail', { title: 'Speler Details', speler: results.speler, speler_deelnames: results.speler_deelnames, authenticated: req.isAuthenticated()});
     });
 };
 

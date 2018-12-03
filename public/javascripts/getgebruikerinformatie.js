@@ -3,13 +3,17 @@ xmlhttp.onreadystatechange = function () {
 
     if (this.readyState == 4 && this.status == 200) {
         var gebruikersnaam = this.response;
-        if (gebruikersnaam) {
-            loginButton = document.getElementById('loginbutton');
-            loginButton.innerHTML = "Log out";
-            loginButton.form.action = '/user/logout';
+        if (!gebruikersnaam) {
+            loginDiv = document.getElementById('loginDiv');
+            loginDiv.hidden = false;
+        }
+        else {
+            adminDiv = document.getElementById('adminDiv');
+            adminDiv.hidden = false;
+            loginDiv = document.getElementById('loginDiv');
+            loginDiv.hidden = true;
 
-            loginStatus = document.getElementById('loginstatus');
-            loginStatus.innerHTML = "Welkom " + gebruikersnaam;
+
         }
        
     }
