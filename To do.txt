@@ -1,0 +1,25 @@
+- CSS (Elien) + MOBIEL
+
+- Google Maps => embedded media element
+
+- HTML 'table' in alle detailpagina's (in pug bestanden fiksen)
+	=> https://www.nodejsera.com/library/pug/pug-tables.html?fbclid=IwAR3N31GzGq_ZpeVI3obW8dU60WfvD_a38LQ9duluWxfMExXMTYL6M-iP31o
+	=> later sorteerknoppen toevoegen (Jonas heeft al ideetjes, kost wel veel tijd)
+	=> SORTEREN: https://www.w3schools.com/howto/howto_js_sort_table.asp
+
+- Presentatie: (Elien)
+	=> UML schema maken
+	=> Routing schema maken
+
+=> Third party API's 2x!!!
+
+- website online zetten
+
+- BUG: duplicate wedstrijden mogen niet mogelijk zijn => dit gebeurt bij alle klassen als je ze update
+=> controle duplicaten bij update form (JONAS)
+
+- Niet weergeven administratorshizzle wanneer niet ingelogd als admin (JONAS)
+
+- Overleggen weergeven alle spelers en verbergen alle deelnames?
+
+
