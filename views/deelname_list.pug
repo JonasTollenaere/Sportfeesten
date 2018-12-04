@@ -8,10 +8,15 @@ block content
   table#myTable
     tr
       th(onclick='sortTable(0)') Datum
+        span
       th(onclick='sortTable(1)') Locatie
+        span
       th(onclick='sortTable(2)') Discipline
+        span
       th(onclick='sortTable(3)') Speler
+        span
       th(onclick='sortTableNumerically(4)') Score
+        span  &#x25BC
     each deelname in deelname_list
         tr
             td

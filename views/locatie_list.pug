@@ -7,7 +7,9 @@ block content
   table#myTable
     tr
       th(onclick='sortTable(0)') Gemeente
+        span  &#x25B2
       th(onclick='sortTable(1)') Provincie
+        span
     each locatie in locatie_list
         tr
             td

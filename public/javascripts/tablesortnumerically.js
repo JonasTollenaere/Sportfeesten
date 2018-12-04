@@ -51,4 +51,11 @@ function sortTableNumerically(n) {
             }
         }
     }
+    spans = rows[0].getElementsByTagName("span");
+    for (i = 0; i < spans.length; i++) {
+        spans[i].innerHTML = '';
+    }
+
+    if (dir != "desc") rows[0].getElementsByTagName("span")[n].innerHTML = ' &#x25B2';
+    else rows[0].getElementsByTagName("span")[n].innerHTML = ' &#x25BC';
 }
