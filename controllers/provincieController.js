@@ -6,6 +6,7 @@ exports.provincie_detail = function (req, res, next) {
     async.parallel({
         locatie_list: function (callback) {
             Locatie.find({ provincie: req.params.provincienaam })
+                .sort('naam')
                 .exec(callback);
         },
 
