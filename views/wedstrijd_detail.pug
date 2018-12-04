@@ -11,7 +11,9 @@ block content
     table#myTable
         tr
             th(onclick='sortTable(0)') Speler
+                span 
             th(onclick='sortTableNumerically(1)') Score
+                span  &#x25BC
         each deelname in wedstrijd_deelnames
             tr
                 td 

@@ -11,6 +11,7 @@ const { sanitizeBody } = require('express-validator/filter');
 exports.locatie_list = function (req, res, next) {
     Locatie.find({}, 'naam provincie')
         .populate('locatie')
+        .sort('naam')
         .exec(function (err, list_locaties) {
             if (err) { return next(err); }
             //Successful, so render

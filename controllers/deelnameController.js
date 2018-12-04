@@ -14,6 +14,7 @@ exports.deelname_list = function (req, res) {
         .populate({ path: 'wedstrijd', populate: { path: 'sportfeest' } })
         .populate({ path: 'wedstrijd', populate: { path: 'sportfeest', populate: { path: 'locatie' } } })
         .populate({ path: 'wedstrijd', populate: { path: 'discipline' } })
+        .sort({'score':-1})
         .exec(function (err, list_deelnames) {
             if (err) { return next(err); }
             //Successful, so render

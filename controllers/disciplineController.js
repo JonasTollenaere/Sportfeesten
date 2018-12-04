@@ -10,6 +10,7 @@ const { sanitizeBody } = require('express-validator/filter');
 exports.discipline_list = function (req, res, next) {
     Discipline.find({}, 'naam beschrijving')
         .populate('discipline')
+        .sort('naam')
         .exec(function (err, list_disciplines) {
             if (err) { return next(err); }
             //Successful, so render
