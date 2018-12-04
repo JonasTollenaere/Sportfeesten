@@ -14,9 +14,6 @@ exports.index = function (req, res) {
         discipline_count: function (callback) {
             Discipline.countDocuments({}, callback);
         },
-        //  book_instance_available_count: function (callback) {
-        //    BookInstance.countDocuments({ status: 'Available' }, callback);
-        //},
         speler_count: function (callback) {
             Speler.countDocuments({}, callback);
         },

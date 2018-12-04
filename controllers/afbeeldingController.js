@@ -6,8 +6,8 @@ exports.afbeelding_get = function (req, res, next) {
         .findById(req.params.id)
         .exec(function (err, afbeelding) {
             if (err) { return next(err); }
-            if (afbeelding == null) { // No results.
-                var err = new Error('Image not found');
+            if (afbeelding == null) { // Geen resultaten
+                var err = new Error('Afbeelding niet gevonden');
                 err.status = 404;
                 return next(err);
             }
@@ -23,8 +23,8 @@ exports.afbeelding_detail = function (req, res, next) {
         .findById(req.params.id)
         .exec(function (err, afbeelding) {
             if (err) { return next(err); }
-            if (afbeelding == null) { // No results.
-                var err = new Error('Image not found');
+            if (afbeelding == null) { // Geen resultaten
+                var err = new Error('Afbeelding niet gevonden');
                 err.status = 404;
                 return next(err);
             }

@@ -11,7 +11,7 @@ passport.deserializeUser(Gebruiker.deserializeUser());
 /// USER ROUTES
 // Login form weergeven
 exports.login_get = function (req, res) {
-    res.render('login_form', {title: 'Aanmelden als administrator', referer: req.headers.referer||'/'});
+    res.render('login_form', {title: 'Aanmelden', referer: req.headers.referer||'/'});
 };
 
 // Login post verwerken

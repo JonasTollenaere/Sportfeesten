@@ -18,8 +18,8 @@ html(lang='en')
           block sidebar
             ul(class='sidebar-nav')
               li
-                  a.link(href='/menu')
-                    img.logo.resize(src="/images/Logo.png" alt="logo" title="Logo KLJ") 
+                  a(href='/menu')
+                    img.logo(src="/images/Logo.png" alt="logo" title="Logo KLJ") 
               li 
                 hr
               li
@@ -38,19 +38,17 @@ html(lang='en')
                          button.btn.btn-primary.style(type='submit' title="Log out") Log out
                     br
                   li
-                    p1 Administratorfuncties:
+                   a.link(href='/menu/locatie/create') Locatie toevoegen
                   li 
-                   a(href='/menu/locatie/create') Locatie toevoegen
+                   a.link(href='/menu/discipline/create') Discipline toevoegen
                   li 
-                   a(href='/menu/discipline/create') Discipline toevoegen
+                   a.link(href='/menu/sportfeest/create') Sportfeest toevoegen
                   li 
-                   a(href='/menu/sportfeest/create') Sportfeest toevoegen
+                   a.link(href='/menu/wedstrijd/create') Wedstrijd toevoegen
                   li 
-                   a(href='/menu/wedstrijd/create') Wedstrijd toevoegen
+                   a.link(href='/menu/speler/create') Speler toevoegen
                   li 
-                   a(href='/menu/speler/create') Speler toevoegen
-                  li 
-                   a(href='/menu/deelname/create') Deelname toevoegen
+                   a.link(href='/menu/deelname/create') Deelname toevoegen
                   li 
                    hr
 

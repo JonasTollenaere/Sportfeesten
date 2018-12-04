@@ -14,13 +14,29 @@ p {
     font-family: 'Ubuntu', sans-serif;
     font-size: 15px;
 }
-a {
+.link {
     color: green;
     font-family: 'Ubuntu', sans-serif;
     font-size:15px;
 }
-a:hover{
-    color:#094d09;
+a:hover {
+    color: #094d09
+}
+li a.link:hover {
+    background-color: #094d09;
+    color: white;
+}
+li a {
+    display: block;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 200px;
 }
 .resize {
     width: 100px;
@@ -48,9 +64,13 @@ myTable {
     background-color: #E42630;
     color: white;
 }
-.logo:hover {
+.logo {
     width: 120px;
     height: auto;
+}
+.resize {
+    height: 350px;
+    width: auto;
 }
 .style {
     width: 150px;

@@ -12,7 +12,7 @@ exports.provincie_detail = function (req, res, next) {
     }, function (err, results) {
         if (err) { return next(err); }
         if (results.locatie_list == null) { // No results.
-            var err = new Error('Locatie not found');
+            var err = new Error('Locatie niet gevonden');
             err.status = 404;
             return next(err);
         }

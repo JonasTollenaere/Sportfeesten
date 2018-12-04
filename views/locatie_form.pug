@@ -5,7 +5,7 @@ block content
 
   form(method='POST' action='' enctype='multipart/form-data')
     div.form-group
-      label(for='naam') Naam:
+      label(for='naam') Gemeente:
       input#naam.form-control(type='text' placeholder='vb. Temse' name='naam' required='true' value=(undefined===locatie ? '' : locatie.naam) autofocus autocomplete="off")
     div.form-group
       label(for='provincie') Provincie:
