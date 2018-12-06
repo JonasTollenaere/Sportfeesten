@@ -7,7 +7,7 @@ var logger = require('morgan');
 var passport = require('passport');
 var session = require('express-session');
 var fileupload = require('express-fileupload');
-
+var MongoStore = require('connect-mongo')(session);
 
 var indexRouter = require('./routes/index');
 var menuRouter = require('./routes/menu');
@@ -37,7 +37,8 @@ app.use(bodyParser.json());
 app.use(fileupload());
 
 // Passport and middleware setup
-app.use(session({ secret: 'RFJ2hGclIgRjPYjhvrB2', resave: true, saveUninitialized: true }));
+//app.use(session({ secret: 'RFJ2hGclIgRjPYjhvrB2', resave: true, saveUninitialized: true }));
+app.use(session({ store: new MongoStore({ mongooseConnection: db }), secret: 'RFJ2hGclIgRjPYjhvrB2', resave: true, saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
 
