@@ -1,7 +1,5 @@
 - CSS (Elien) + MOBIEL
 
-- Google Maps API (Elien)
-
 - Presentatie: (Elien + Jonas)
 	=> UML schema maken
 	=> Routing schema maken

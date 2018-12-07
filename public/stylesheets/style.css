@@ -79,32 +79,52 @@ myTable {
 #myInput {
     background-image: url('/images/zoek_icoon.ico');
     background-repeat: no-repeat;
-    width: 100%;
+    width: 500px;
     font-size: 16px;
     padding: 12px 20px 12px 40px;
     border: 1px solid #ddd;
     margin-bottom: 12px;
 }
+/* Always set the map height explicitly to define the size of the div
+ * element that contains the map. */
 #map {
-    height: 400px; /* The height is 400 pixels */
-    width: 100%; /* The width is the width of the web page */
+    height: 100%;
+}
+/* Optional: Makes the sample page fill the window. */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
 }
 
-/* ---------------------------------------------------
-    SIDEBAR STYLE
------------------------------------------------------ */
+#floating-panel {
+    position: absolute;
+    top: 10px;
+    left: 25%;
+    z-index: 5;
+    background-color: #fff;
+    padding: 5px;
+    border: 1px solid #999;
+    text-align: center;
+    font-family: 'Roboto','sans-serif';
+    line-height: 30px;
+    padding-left: 10px;
+}
+.verberg{
+    display:none;
+}
+
 .wrapper {
     display: flex;
     align-items: stretch;
 }
-
 #sidebar {
     min-width: 250px;
 }
 
-#sidebar.active {
-    margin-left: -250px;
-}
+    #sidebar.active {
+        margin-left: -250px;
+    }
 
 .content {
     padding: 0;
