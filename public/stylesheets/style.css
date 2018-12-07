@@ -1,25 +1,92 @@
-body {
-    background-image: "foto1.jpg";
+/* OPSPITSING MOBILE - DESKTOP*/
+@media screen and (max-width:320px) and (min-width: 768px) {
+    #sidebar {
+        min-width: 250px;
+    }
+    #sidebar.active {
+        margin-left: -250px;
+    }
+    #sidebarCollapse.active {
+        display: none;
+    }
+    #sidebarCollapse {
+        display: none;
+    }
+    img{
+        width:100%;
+    }
+}
+@media screen and (min-width: 768px) {
+  #sidebarCollapse {
+      display: none;
+  }
+  p{
+      width:100%;
+  }
+  nav.navbar.navbar-default{
+      display: none;
+  }
+}
+
+/*ALGEMEEN GELDIG*/
+.content {
+    max-width: 500px;
+    margin: auto;
 }
 h1 {
+    text-align: center;
     font-family: 'Ubuntu', sans-serif;
     font-size: 55px;
 }
+
 p {
+    text-align: center;
     font-family: 'Ubuntu', sans-serif;
     font-size: 15px;
+}
+
+.wrapper {
+    text-align: center;
+    display: flex;
+    align-items: stretch;
+}
+
+.btn {
+    width: 150px;
+    background-color: #E42630;
+    border: 0px;
+}
+
+.btn:hover {
+    background-image: none;
+    background-color: #b51212;
+}
+.verberg {
+    display: none;
 }
 .link {
     color: green;
     font-family: 'Ubuntu', sans-serif;
-    font-size:15px;
+    font-size: 15px;
 }
+
 a:hover {
     color: #094d09
 }
+
 li a.link:hover {
     background-color: #094d09;
     color: white;
+}
+#map {
+    height: 100%;
+    width: 50%;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
 }
 li a {
     display: block;
@@ -33,11 +100,13 @@ ul {
     padding: 0;
     width: 200px;
 }
+
 .resize {
     width: 100px;
     height: auto;
 }
-myTable {
+
+#myTable {
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
     border-collapse: collapse;
     width: 100%;
@@ -59,23 +128,6 @@ myTable {
     background-color: #E42630;
     color: white;
 }
-.logo {
-    width: 120px;
-    height: auto;
-}
-.resize {
-    height: 350px;
-    width: auto;
-}
-.style {
-    width: 150px;
-    background-color: #E42630;
-    border: 0px;
-}
-.btn:hover {
-    background-image: none;
-    background-color: #b51212;
-}
 #myInput {
     background-image: url('/images/zoek_icoon.ico');
     background-repeat: no-repeat;
@@ -85,49 +137,7 @@ myTable {
     border: 1px solid #ddd;
     margin-bottom: 12px;
 }
-/* Always set the map height explicitly to define the size of the div
- * element that contains the map. */
-#map {
-    height: 100%;
-}
-/* Optional: Makes the sample page fill the window. */
-html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-}
-
-#floating-panel {
-    position: absolute;
-    top: 10px;
-    left: 25%;
-    z-index: 5;
-    background-color: #fff;
-    padding: 5px;
-    border: 1px solid #999;
-    text-align: center;
-    font-family: 'Roboto','sans-serif';
-    line-height: 30px;
-    padding-left: 10px;
-}
-.verberg{
-    display:none;
-}
-
-.wrapper {
-    display: flex;
-    align-items: stretch;
-}
-#sidebar {
-    min-width: 250px;
-}
-
-    #sidebar.active {
-        margin-left: -250px;
-    }
-
-.content {
-    padding: 0;
-    right: 0;
-}
+.logo {
+    width: 120px;
+    height: auto;
 }

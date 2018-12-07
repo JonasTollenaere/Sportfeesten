@@ -13,7 +13,7 @@ exports.sportfeest_list = function (req, res, next) {
         .exec(function (err, list_sportfeesten) {
             if (err) { return next(err); }
             //Successful, so render
-            res.render('sportfeest_list', { title: 'Alle sportfeesten', sportfeest_list: list_sportfeesten });
+            res.render('sportfeest_list', { title: 'Sportfeesten', sportfeest_list: list_sportfeesten });
         });
 }
 

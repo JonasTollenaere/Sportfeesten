@@ -13,7 +13,7 @@ html(lang='en')
     link(rel='icon', href='/images/favicon.ico')
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
-  div(class='col-sm-2')
+  .kolom.menu
     .wrapper
       nav#sidebar
         #dismiss
@@ -55,7 +55,7 @@ html(lang='en')
             form(action="/user/login")
                     button.btn.btn-primary.style(type='submit' title="Log in") Log in
             hr
-      div(class='col-sm-12')
+      .kolom.restpagina
           block content
       .content
         nav.navbar.navbar-default
@@ -68,8 +68,8 @@ html(lang='en')
       $(document).ready(function () {
       $('#sidebarCollapse').on('click', function () {
       $('#sidebar').toggleClass('active');
+      $('#sidebarCollapse').toggleClass('active');
       });
       });
 
 script(src="/javascripts/getgebruikerinformatie.js")
-script(src="/javascripts/menu.js")

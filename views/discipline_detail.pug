@@ -8,7 +8,6 @@ block content
      h5 #{discipline.beschrijving}
 
      if(discipline.afbeelding)
-         h4 Afbeelding:
          a(href=discipline.afbeelding.url +'/show')
             img.resize(src="/menu/afbeelding/"+discipline.afbeelding._id title="Klik om de afbeelding op ware grootte te bekijken")
      if(authenticated)

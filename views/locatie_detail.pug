@@ -8,8 +8,11 @@ block content
 
   #floating-panel
   input#address.verberg(value=locatie.naam)
-  #map
-  script(async='', defer='', src='https://maps.googleapis.com/maps/api/js?key=KEY&callback=initMap')
+  if(locatie.afbeelding)
+    a(href=locatie.afbeelding.url +'/show')
+    img(src="/menu/afbeelding/"+locatie.afbeelding._id width="50%" title="Klik om de afbeelding op ware grootte te bekijken")   
+  #map(width="50%")
+  script(async='', defer='', src='https://maps.googleapis.com/maps/api/js?key=AIzaSyC67cuycW4xwZu5W1TND7Gg0m2eZGjhbm8&callback=initMap')
   script(src="/javascripts/maps.js")
 
   if(authenticated)
