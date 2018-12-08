@@ -4,10 +4,10 @@ block content
   
   h1 #{title}
   br
-  form(role='form', method="POST", style='max-width: 300px;')
+  form.form(role='form', method="POST")
     div.form-group
         label(for='sportfeest') Gebruikersnaam:
-        input.form-control(type='text', name="username", placeholder='Vul hier je gebruikersnaam in').form-group
+        input.form-control(type='text', name="username", placeholder='Vul hier je gebruikersnaam in')
         label(for='sportfeest') Wachtwoord:
         input.form-control(type='password', name="password", placeholder='Vul hier je wachtwoord in')
         input(type='text', name="referer", value=(undefined===referer ? '' : referer), hidden)

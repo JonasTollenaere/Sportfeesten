@@ -4,12 +4,11 @@
     "\\controllers",
     "\\models",
     "\\public",
-    "\\public\\images",
     "\\public\\javascripts",
     "\\public\\stylesheets",
     "\\routes",
     "\\views"
   ],
-  "SelectedNode": "\\views\\layout.pug",
+  "SelectedNode": "\\views\\wedstrijd_delete.pug",
   "PreviewInSolutionExplorer": false
 }

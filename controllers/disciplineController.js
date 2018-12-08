@@ -43,7 +43,7 @@ exports.discipline_detail = function (req, res, next) {
 
 // Discipline create form weergeven
 exports.discipline_create_get = function (req, res, next) {
-    res.render('discipline_form', {title: 'Voeg discipline toe'})
+    res.render('discipline_form', {title: 'Toevoegen discipline'})
 };
 
 // Verwerken discipline create post

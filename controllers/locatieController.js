@@ -43,7 +43,7 @@ exports.locatie_detail = function (req, res, next) {
 
 // Weergeven locatie create form
 exports.locatie_create_get = function (req, res, next) {
-    res.render('locatie_form', { title: 'Toevoegen Locatie' });
+    res.render('locatie_form', { title: 'Toevoegen locatie' });
 }
 
 // Verwerken locatie create POST

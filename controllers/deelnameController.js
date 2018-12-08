@@ -62,7 +62,7 @@ exports.deelname_create_get = function (req, res, next) {
         },
     }, function (err, results) {
         if (err) { return next(err); }
-        res.render('deelname_form', { title: 'Deelname toevoegen', spelers: results.spelers, wedstrijden: results.wedstrijden, sportfeesten: results.sportfeesten });
+        res.render('deelname_form', { title: 'Toevoegen deelname', spelers: results.spelers, wedstrijden: results.wedstrijden, sportfeesten: results.sportfeesten });
     });
 
 }

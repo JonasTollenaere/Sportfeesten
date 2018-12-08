@@ -56,7 +56,7 @@ exports.speler_create_get = function (req, res, next) {
         .exec(function (err, locaties) {
             if (err) { return next(err); }
             //Renderen indien succesvol
-            res.render('speler_form', { title: 'Toevoegen Speler', locatie_list: locaties });
+            res.render('speler_form', { title: 'Toevoegen speler', locatie_list: locaties });
         });
 }
 

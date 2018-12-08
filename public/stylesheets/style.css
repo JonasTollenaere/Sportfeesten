@@ -1,4 +1,3 @@
-/* OPSPITSING MOBILE - DESKTOP*/
 /*ALGEMEEN GELDIG*/
 h1 {
     text-align: center;
@@ -6,6 +5,11 @@ h1 {
     font-size: 55px;
 }
 
+h4, h5 {
+    text-align: center;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 15px;
+}
 p {
     text-align: center;
     font-family: 'Ubuntu', sans-serif;
@@ -79,10 +83,14 @@ li a.link:hover {
 }
 
 #map {
-    height: 100%;
-    width: 50%;
+    height: 45%;
+    width: 45%;
 }
-
+.locatie {
+    width:50%;
+    height:auto;
+    float: right;
+}
 html, body {
     height: 100%;
     margin: 0;
@@ -97,20 +105,22 @@ li a {
 
 ul {
     list-style-type: none;
-    margin: 0;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
     padding: 0;
     width: 200px;
 }
 
 .resize {
-    width: 100px;
+    width: 70%;
     height: auto;
 }
 
 #myTable {
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
     border-collapse: collapse;
-    width: 90%;
+    width: 75%;
     margin-left: auto;
     margin-right: auto;
 }
@@ -135,7 +145,9 @@ ul {
 #myInput {
     background-image: url('/images/zoek_icoon.ico');
     background-repeat: no-repeat;
-    width: 500px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
     font-size: 16px;
     padding: 12px 20px 12px 40px;
     border: 1px solid #ddd;
@@ -190,6 +202,18 @@ div.content {
 
 .sidebtn {
     display: none;
+}
+
+.form {
+    margin-top: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+.form-group {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    width: 50%;
 }
 
 @media screen and (max-width: 700px) {
