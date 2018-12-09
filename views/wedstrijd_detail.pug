@@ -15,7 +15,7 @@ block content
         each deelname in wedstrijd_deelnames
             tr
                 td 
-                    a(href=deelname.speler.url) #{deelname.speler.voornaam} #{deelname.speler.achternaam}
+                    a(href=deelname.speler.url) #{deelname.speler.voornaam} #{deelname.speler.achternaam}  
                 td
                     a(href=deelname.url) #{deelname.score}
     
@@ -30,4 +30,5 @@ block content
          a(href=wedstrijd.url+'/update') Pas deze wedstrijd aan
     script(src="/javascripts/tablesortnumerically.js")
     script(src="/javascripts/tablesort.js")
+    script(src="/javascripts/wedstrijdmedailles.js")
     

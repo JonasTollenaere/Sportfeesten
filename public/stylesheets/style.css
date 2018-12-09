@@ -117,6 +117,25 @@ ul {
     height: auto;
 }
 
+.gold {
+background-color: #fff0b3;
+}
+.gold:hover {
+    background-color: #ffe066 !important;
+}
+.silver {
+background-color: #e6e6e6;
+}
+.silver:hover {
+    background-color: #bfbfbf !important;
+}
+.bronze {
+background-color: #f0c18f;
+}
+.bronze:hover {
+    background-color: #e79c4b !important;
+}
+
 #myTable {
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
     border-collapse: collapse;
