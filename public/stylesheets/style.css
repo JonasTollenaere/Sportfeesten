@@ -216,6 +216,15 @@ div.content {
     width: 50%;
 }
 
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: grey;
+    color: white;
+    text-align: center;
+}
 @media screen and (max-width: 700px) {
     .sidebar {
         width: 100%;
@@ -242,6 +251,7 @@ div.content {
         width: auto;
         display: inline;
     }
+
 
 }
 
