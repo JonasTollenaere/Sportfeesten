@@ -10,19 +10,32 @@ block content
 
   div(style='margin-left:20px;margin-top:20px')
 
-    h4 Deelnames
+    p Deelnames:
     
-    dl
-    each deelname in speler_deelnames
-      dt 
-        a(href=deelname.wedstrijd.url) Discipline: #{deelname.wedstrijd.discipline.naam}
-      dd Locatie: #{deelname.wedstrijd.sportfeest.locatie.naam}
-      dd Datum: #{deelname.wedstrijd.sportfeest.datum_geformatteerd}
-      dd Score: #{deelname.score}
-      br
+    table#myTable
+        tr
+          th(onclick='sortTable(0)') Locatie
+            span
+          th(onclick='sortTable(1)') Datum
+            span  &#x25BC
+          th(onclick='sortTable(2)') Discipline
+            span
+          th(onclick='sortTableNumerically(3)') Score
+            span
+        each deelname in speler_deelnames
+            tr
+                td
+                    a(href=deelname.wedstrijd.sportfeest.url) #{deelname.wedstrijd.sportfeest.locatie.naam}
+                td
+                    a(href=deelname.wedstrijd.sportfeest.url) #{deelname.wedstrijd.sportfeest.datum_geformatteerd}
+                td
+                    a(href=deelname.wedstrijd.url) #{deelname.wedstrijd.discipline.naam}
+                td
+                    a(href=deelname.url) #{deelname.score}
 
-    else
-      p Deze speler heeft geen deelnames.
+
+        else
+          p Deze speler heeft momenteel geen deelnames in de database.
 
     if(authenticated)
         hr
@@ -30,3 +43,8 @@ block content
             a(href=speler.url+'/delete') Verwijder deze speler
         p
             a(href=speler.url+'/update') Wijzig deze speler
+  script(src="/javascripts/tablesort.js")
+  script(src="/javascripts/tablesortnumerically.js")
+  script.
+    sortTable(1)
+    sortTable(1)

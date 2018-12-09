@@ -3,11 +3,33 @@ extends layout
 block content
   h1= title
   
-  ul
+  input#myInput(type='text', onkeyup='zoekFunctie(0)', placeholder='Zoeken naar spelers ...', title='Typ een naam in')
+
+  table#myTable
+    tr
+      th(onclick='sortTable(0)') Naam
+        span  &#x25B2
+      th(onclick='sortTable(1)') Thuislocatie
+        span
+      th(onclick='sortTable(2)') Geboortedatum
+        span
+      //th(onclick='sortTable(3)') Speler
+        span
+      //th(onclick='sortTable(4)') Aantal eerste plaatsen//gemiddelde score
+        span
+  
     each speler in speler_list
-      li 
-        a(href=speler.url) #{speler.voornaam} #{speler.achternaam}
-        |  (#{speler.leeftijd} jaar, #{speler.thuislocatie.naam})
+      tr
+        td
+            a(href=speler.url)  #{speler.achternaam} #{speler.voornaam}
+        td 
+            a(href=speler.thuislocatie.url) #{speler.thuislocatie.naam}
+        td 
+            a(href=speler.url) #{speler.geboortedatum_geformatteerd}
 
     else
-      li Er zijn geen spelers.
+      li Er zijn momenteel geen spelers aanwezig in onze database.
+
+  script(src="/javascripts/tablesort.js")
+  script(src="/javascripts/tablesortnumerically.js")
+  script(src="/javascripts/zoekfunctie.js")

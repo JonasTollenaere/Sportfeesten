@@ -3,13 +3,17 @@ extends layout
 block content
 
   h1 Deelname: 
+  
+  p Speler: 
+     a(href=deelname.speler.url) #{deelname.speler.voornaam} #{deelname.speler.achternaam}
+  p Sportfeest: 
+     a(href=deelname.wedstrijd.sportfeest.url) #{deelname.wedstrijd.sportfeest.locatie.naam} #{deelname.wedstrijd.sportfeest.datum_geformatteerd}
+  p Discipline: 
+     a(href=deelname.wedstrijd.discipline.url) #{deelname.wedstrijd.discipline.naam}
   p Wedstrijd: 
      a(href=deelname.wedstrijd.url) klik hier
-  p Speler: #{deelname.speler.voornaam} #{deelname.speler.achternaam}
-  p Locatie: #{deelname.wedstrijd.sportfeest.locatie.naam}
-  p Datum: #{deelname.wedstrijd.sportfeest.datum_geformatteerd}
-  p Discipline: #{deelname.wedstrijd.discipline.naam}
   p Score: #{deelname.score}
+
   if(authenticated)
       hr
       p

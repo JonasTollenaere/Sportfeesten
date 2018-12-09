@@ -3,7 +3,7 @@ extends layout
 block content
   h1= title
 
-  input#myInput(type='text', onkeyup='zoekFunctie()', placeholder='Zoeken naar spelers ...', title='Typ een naam in')
+  input#myInput(type='text', onkeyup='zoekFunctie(3)', placeholder='Zoeken naar spelers ...', title='Typ een naam in')
 
   table#myTable
     tr
@@ -32,7 +32,7 @@ block content
                 
 
     else
-      li Er zijn geen deelnames.
+      li Er zijn momenteel geen deelnames in onze database.
   script(src="/javascripts/tablesort.js")
   script(src="/javascripts/tablesortnumerically.js")
   script(src="/javascripts/zoekfunctie.js")

@@ -8,12 +8,12 @@ const { sanitizeBody } = require('express-validator/filter');
 // Lijst van alle spelers weergeven
 exports.speler_list = function (req, res, next) {
     Speler.find()
-        .sort([['familienaam', 'descending']])
+        .sort('achternaam')
         .populate('thuislocatie')
         .exec(function (err, list_spelers) {
             if (err) { return next(err); }
             //Successful, so render
-            res.render('speler_list', { title: 'Spelerslijst', speler_list: list_spelers });
+            res.render('speler_list', { title: 'Spelers', speler_list: list_spelers });
         });
 
 };
@@ -30,7 +30,7 @@ exports.speler_detail = function (req, res, next) {
         speler_deelnames: function (callback) {
             Deelname.find({ 'speler': req.params.id })
                 .populate('wedstrijd')
-                .populate({ path: 'wedstrijd', populate: { path: 'sportfeest' } })
+                .populate({ path: 'wedstrijd', populate: { path: 'sportfeest', sort: [['datum']]   }})
                 .populate({ path: 'wedstrijd', populate: { path: 'sportfeest', populate: { path: 'locatie' } } })
                 .populate({ path: 'wedstrijd', populate: { path: 'discipline' } })
                 .exec(callback);

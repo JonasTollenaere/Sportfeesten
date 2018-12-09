@@ -25,7 +25,10 @@ block content
           else
             option(value=discipline._id) #{discipline.naam}
 
-    button.btn.btn-primary.style(type='submit') Voeg toe
+    if wedstrijd
+        button.btn.btn-primary.style(type='submit') Wijzig
+    else
+        button.btn.btn-primary.style(type='submit') Voeg toe
 
   if errors 
     ul

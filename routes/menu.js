@@ -37,7 +37,7 @@ router.post('/deelname/:id/update', user_controller.isAuthenticated, deelname_co
 router.get('/deelname/:id', deelname_controller.deelname_detail);
 
 // GET request voor de lijst met alle deelnames
-router.get('/deelnames', deelname_controller.deelname_list);
+//router.get('/deelnames', deelname_controller.deelname_list);
 
 // GET request voor wedstrijden horende bij een sportfeest in deelnameform
 router.get('/getWedstrijden/:id', deelname_controller.get_wedstrijdensportfeest);
@@ -183,7 +183,7 @@ router.post('/speler/:id/update', user_controller.isAuthenticated, speler_contro
 router.get('/speler/:id', speler_controller.speler_detail);
 
 // GET request voor de lijst met alle spelers
-//router.get('/spelers', speler_controller.speler_list);
+router.get('/spelers', speler_controller.speler_list);
 
 
 
