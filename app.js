@@ -8,12 +8,16 @@ var passport = require('passport');
 var session = require('express-session');
 var fileupload = require('express-fileupload');
 var MongoStore = require('connect-mongo')(session);
+var compression = require('compression');
+var helmet = require('helmet');
 
 var indexRouter = require('./routes/index');
 var menuRouter = require('./routes/menu');
 var userRouter = require('./routes/user')
 
 var app = express();
+
+app.use(helmet());
 
 // MongoDB setup - set up mongoose connection
 var mongoose = require('mongoose');
@@ -22,6 +26,9 @@ mongoose.connect(mongoDB, {useNewUrlParser: true});
 mongoose.Promise = global.Promise;
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+
+//compress al routes
+app.use(compression());
 
 // View engine setup
 app.set('views', path.join(__dirname, 'views'));
